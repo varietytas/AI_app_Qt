@@ -19,6 +19,12 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        sendconfirmwindow.cpp
+        sendconfirmwindow.h
+        sendconfirmwindow.ui
+        resetwarningwindow.cpp
+        resetwarningwindow.h
+        resetwarningwindow.ui
         ${TS_FILES}
 )
 
@@ -26,6 +32,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ai-qt-app
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        sendconfirmwindow.h sendconfirmwindow.cpp sendconfirmwindow.ui
+        resetwarningwindow.h resetwarningwindow.cpp resetwarningwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ai-qt-app APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

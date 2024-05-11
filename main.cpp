@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
         }
     }
     MainWindow w;
+    // Maximize window on startup
+    // w.setWindowState(Qt::WindowMaximized);
     w.show();
     return a.exec();
 }
