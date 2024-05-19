@@ -1,0 +1,9 @@
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/ai-qt-app.dir
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/list_install_components.dir
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/install.dir
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/install/local.dir
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/install/strip.dir
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/ai-qt-app_autogen_timestamp_deps.dir
+D:/studying/HSEProject_QT/AI_app_Qt/cmake-build-debug/CMakeFiles/ai-qt-app_autogen.dir

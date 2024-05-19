@@ -1,6 +1,20 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(ai-qt-app VERSION 0.1 LANGUAGES CXX)
+#include(FetchContent)
+#set(BOOST_INCLUDE_LIBRARIES json)
+#set(BOOST_ENABLE_CMAKE ON)
+#FetchContent_Declare(
+#        boost
+#        GIT_REPOSITORY  https://github.com/boostorg/boost.git
+#)
+#FetchContent_MakeAvailable(boost)
+#FetchContent_Declare(
+#        json
+#        GIT_REPOSITORY https://github.com/nlohmann/json.git
+#        GIT_TAG 9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6
+#)
+#FetchContent_MakeAvailable(json)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -25,6 +39,9 @@ set(PROJECT_SOURCES
         resetwarningwindow.cpp
         resetwarningwindow.h
         resetwarningwindow.ui
+        requestsToBackEnd.cpp
+        requestsToBackend.h
+
         ${TS_FILES}
 )
 
@@ -56,8 +73,25 @@ else()
 
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
+#set (BOOST_ROOT "D:/studying/HSEProject_QT/AI_app_Qt/boost_1_75_0") # Путь к библиотеке Boost
+#find_package(Boost REQUIRED )
+#include_directories( ${Boost_INCLUDE_DIRS} )
+#target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets {Boost_FILESYSTEM_LIBRARY})
 
-target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
+
+# Find the Boost libraries
+#find_package(Boost REQUIRED COMPONENTS system program_options)
+#
+#include_directories(${Boost_INCLUDE_DIRS})
+#link_directories(${Boost_LIBRARY_DIRS})
+#target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${Boost_LIBRARIES})
+
+
+# Если библиотека найдена, то
+#target_include_directories (SYSTEM ${Boost_INCLUDE_DIR}) # подключаем заголовочные файлы
+#
+#target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ai-qt-app ${Boost_LIBRARIES})
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
@@ -79,6 +113,9 @@ install(TARGETS ai-qt-app
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+# Укажите компоненты Boost, которые вам нужны
+#find_package(Boost 1.79 REQUIRED COMPONENTS filesystem system)
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(ai-qt-app)
