@@ -112,27 +112,27 @@ json::value send_request(const json::value& json_obj, const std::string& url, co
 
 
 
-struct AuthUser{
-    std::string email;
-    std::string password;// in md5 hash
-    std::string token;
-    json::value get_token(){
-        json::value json_obj;
-        json_obj["email"] = this->email;
-        json_obj["password"] =  this->password;
-        json::value response_json = send_request(json_obj, "https://" + host + ":" + port + target, "POST");
-        this->token = response_json["token"].as_string();
-        return response_json;
-    };
-    json::value get_post_text(std::string request){
-        json::value json_obj;
-        json_obj["token"] = this->token;
-        json_obj["request"] =  request;
-        json::value response_json = send_request(json_obj, api_url+"/text_request", "POST");
-        this->token = response_json["token"].as_string();
-        return response_json;
-    };
+// struct AuthUser{
+//     std::string email;
+//     std::string password;// in md5 hash
+//     std::string token;
+//     json::value get_token(){
+//         json::value json_obj;
+//         json_obj["email"] = this->email;
+//         json_obj["password"] =  this->password;
+//         json::value response_json = send_request(json_obj, "https://" + host + ":" + port + target, "POST");
+//         this->token = response_json["token"].as_string();
+//         return response_json;
+//     };
+//     json::value get_post_text(std::string request){
+//         json::value json_obj;
+//         json_obj["token"] = this->token;
+//         json_obj["request"] =  request;
+//         json::value response_json = send_request(json_obj, api_url+"/text_request", "POST");
+//         this->token = response_json["token"].as_string();
+//         return response_json;
+//     };
 
 
-};
+// };
 

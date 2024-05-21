@@ -1,5 +1,12 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <QStandardItemModel>
+#include <QStandardItem>
+#include <QStringListModel>
+#include <QStringList>
+#include <QCoreApplication>
+#include <QUrl>
+#include <QDesktopServices>
 
 
 MainWindow::MainWindow(QWidget* parent)
@@ -7,6 +14,24 @@ MainWindow::MainWindow(QWidget* parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    QStringList list;
+    model=new QStringListModel;
+    
+    list<<"Matan";
+    list<<"Parrot";
+    list<<"Dog";
+    model->setStringList(list);
+    ui->textEdit->setModel(model);
+    
+    connect(ui->pushButton_generate, &QPushButton::clicked, this, &MainWindow::on_pushButton_generate_clicked);
+
+    
+}
+void MainWindow::on_textEdit_clicked(const QModelIndex &index)
+{
+    QList<QString> newList = {"<h3>Let {xn} be a sequence of real numbers. A number L is the limit of the sequence {xn}, if the numbers in</h3><p>the sequence beco<del>me closer and closer to L — and not to any other number.</del></p><p><del>Formal definition:</del></p><blockquote>For any ε > 0<a href=\"http://youtube\"> ther</a>e exists a natural number N such that, for every natural number n > N,</blockquote><code>we have |xn − L| < ε.</code><p>The<b> sequence {xn} is said to converge to or tend to the limit L, written</b></p><h1>In symbols: ∀ε > 0 ∃N ∈ N ∀n > N : |xn − L| < ε</h1><p></p><p></p><ul><li>ewer</li></ul><ol><li>req</li></ol><h6>jk</h6>",  "Мой попугай сегодня выучил новое слово и теперь повторяет его без устали! Этот маленький разговорчивец стал настоящим центром внимания в нашем доме. Его яркие перья и веселое поведение всегда вызывают улыбку на лицах всех членов семьи.", "<div> <h2>Пост о собаке:</h2><p>Сегодня я решил попробовать новую добавку для своей собаки. Она содержит все необходимые витамины и минералы для здоровья моего питомца. Надеюсь, что это поможет ему чувствовать себя еще лучше и быть более активным!</p></div>"};
+    ui->tableView->setHtml(newList[index.row()]);
 }
 MainWindow::~MainWindow()
 {
@@ -36,4 +61,25 @@ void MainWindow::on_pushButton_Reset_clicked()
 {
     rww.show();
 }
+
+void MainWindow::on_pushButton_CMS_clicked()
+{
+    QDesktopServices::openUrl(QUrl("http://localhost:1337/admin/content-manager/collection-types/api::blog.blog?page=1&pageSize=10&sort=name:ASC"));
+}
+
+QString get_respones_from_yandex_gpt(QString &text){
+    return text;
+}
+
+void MainWindow::on_pushButton_generate_clicked()
+{
+    QString text = ui->textedit_subject->toPlainText(); // Получаем текст из textEdit_subject
+    // get_respones_from_yandex_gpt(text); // Отправляем текст в функцию get_new()
+    // rww.show();
+    // QString text = get_respones_from_yandex_gpt(text); // Вызываем функцию get_new() с полученным текстом
+
+    ui->textbox_response->setText(text); 
+
+}
+
 

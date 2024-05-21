@@ -39,8 +39,8 @@ set(PROJECT_SOURCES
         resetwarningwindow.cpp
         resetwarningwindow.h
         resetwarningwindow.ui
-        requestsToBackEnd.cpp
-        requestsToBackend.h
+        # requestsToBackEnd.cpp
+        # requestsToBackend.h
 
         ${TS_FILES}
 )
@@ -73,12 +73,12 @@ else()
 
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
-#set (BOOST_ROOT "D:/studying/HSEProject_QT/AI_app_Qt/boost_1_75_0") # Путь к библиотеке Boost
-#find_package(Boost REQUIRED )
-#include_directories( ${Boost_INCLUDE_DIRS} )
-#target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets {Boost_FILESYSTEM_LIBRARY})
+set (BOOST_ROOT "/Users/sergeybudygin/Desktop/boost_1_85_0") # Путь к библиотеке Boost
+find_package(Boost REQUIRED )
+include_directories( ${Boost_INCLUDE_DIRS} )
+target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${Boost_FILESYSTEM_LIBRARY})
 
-target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
+# target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
 
 # Find the Boost libraries
 #find_package(Boost REQUIRED COMPONENTS system program_options)
