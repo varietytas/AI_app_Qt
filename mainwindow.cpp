@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     QStringList list;
     model=new QStringListModel;
-    
+     
     list<<"Matan";
     list<<"Parrot";
     list<<"Dog";
@@ -55,10 +55,14 @@ void MainWindow::defaultResize()
 void MainWindow::on_pushButton_Done_clicked()
 {
     scw.show();
+    ui->textbox_response->clear();
+    ui->textedit_subject->clear();
 }
 
 void MainWindow::on_pushButton_Reset_clicked()
 {
+    ui->textbox_response->clear();
+    ui->textedit_subject->clear();
     rww.show();
 }
 

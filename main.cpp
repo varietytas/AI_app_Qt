@@ -4,6 +4,8 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include "database.h"
+#include <iostream>
 // namespace json = boost::json;       // from <boost/json.hpp>
 
 int main(int argc, char *argv[])
@@ -28,6 +30,18 @@ int main(int argc, char *argv[])
     MainWindow w;
     // Maximize window on startup
     // w.setWindowState(Qt::WindowMaximized);
+    // Database db;
+
+    // db.createTables();
+    // db.addText("firstname", "2", "3",   "5");
+    // db.addText("firstname23", "2", "3",   "5");
+    // db.addText("firstnamewe321", "2", "3",   "5");
+    // db.addText("firstname34323", "2", "3",   "5");
+    // db.addText("firstname3432", "2", "3",   "5");
+    // for (UserInfo t: db.getAllTexts())
+    // {
+    //     std::cout << t.id << '\t' << t.firstname << '\n';
+    // }
     w.show();
     return a.exec();
 }

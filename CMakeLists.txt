@@ -23,6 +23,29 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# FOR DB
+
+# include(FetchContent)
+# FetchContent_Declare(sqlite3 URL https://www.sqlite.org/2024/sqlite-amalgamation-3450300.zip)
+# FetchContent_MakeAvailable(sqlite3)
+
+# # Set the path to the SQLite amalgamation directory
+# set(SQLITE "${CMAKE_SOURCE_DIR}/build/_deps/sqlite3-src")
+
+# # Include the SQLite amalgamation directly into the project
+# add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c) 
+
+# # Add include directories for SQLite
+# target_include_directories(sqlite3 PUBLIC ${SQLITE})
+
+# # Define the executable and its source files
+# add_executable(summarization main.cpp database.h)
+
+# # Link the SQLite library with our project
+# target_link_libraries(summarization PRIVATE sqlite3)
+
+ 
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
@@ -41,6 +64,7 @@ set(PROJECT_SOURCES
         resetwarningwindow.ui
         # requestsToBackEnd.cpp
         # requestsToBackend.h
+        # database.h
 
         ${TS_FILES}
 )
