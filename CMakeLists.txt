@@ -62,6 +62,8 @@ set(PROJECT_SOURCES
         resetwarningwindow.cpp
         resetwarningwindow.h
         resetwarningwindow.ui
+        LoginWindow.cpp
+        LoginWindow.h
         # requestsToBackEnd.cpp
         # requestsToBackend.h
         # database.h
@@ -75,6 +77,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         sendconfirmwindow.h sendconfirmwindow.cpp sendconfirmwindow.ui
         resetwarningwindow.h resetwarningwindow.cpp resetwarningwindow.ui
+        AuthManager.h AuthManager.cpp
+        LoginWindow.h LoginWindow.cpp
+        login.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ai-qt-app APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

@@ -5,12 +5,35 @@
 #include <QLocale>
 #include <QTranslator>
 #include "database.h"
-#include <iostream>
+#include "LoginWindow.h"
+#include "mainwindow.h"
+#include "AuthManager.h"
 // namespace json = boost::json;       // from <boost/json.hpp>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    // AuthManager authManager;
+    /*if (!authManager.isLogin()) {
+        LoginWindow loginWindow;
+        loginWindow.show();
+
+        // Подключаем сигнал успешного входа к открытию главного окна
+        QObject::connect(&loginWindow, &LoginWindow::loginSuccessful, [&]() {
+            MainWindow mainWindow;
+            mainWindow.show();
+            loginWindow.close(); // Закрываем окно входа после успешного входа
+        });
+
+        // Запускаем цикл обработки событий приложения
+        return a.exec();
+    } else {
+        // Если пользователь уже авторизован, отображаем главное окно сразу
+        MainWindow mainWindow;
+        mainWindow.show();
+        return a.exec();
+    }*/
+
     // json::value json_obj;
     // std::string url;
     // json::value answer;

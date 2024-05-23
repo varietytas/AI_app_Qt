@@ -20,26 +20,49 @@
    <property name="styleSheet">
     <string notr="true">
      QWidget {
-      background-color: #e0f7fa;
-      color: black;
+      background-color: #1e1e1e;
+      color: #dcdcdc;
      }
      QTabWidget::pane {
-      border: 1px solid #4fc3f7;
+      border: none;
      }
      
      QPushButton {
-      background-color: #81d4fa;
-      color: black;
-      border: 2px solid #4fc3f7;
+      background-color: #3b3b3b;
+      color: #dcdcdc;
       border-radius: 20px;
       padding: 5px;
       min-width: 80px;
      }
      QPushButton:hover {
-      background-color: #4fc3f7;
+      background-color: #575757;
      }
      QPushButton:pressed {
-      background-color: #29b6f6;
+      background-color: #737373;
+     }
+
+     QPlainTextEdit, QTextBrowser {
+      background-color: #2e2e2e;
+      color: #dcdcdc;
+      border-radius: 15px;
+      padding: 10px;
+     }
+     
+     QListView {
+      background-color: #2e2e2e;
+      color: #dcdcdc;
+      border-radius: 15px;
+      padding: 5px;
+     }
+     
+     QListView::item {
+      padding: 10px;
+      border-bottom: 1px solid #3b3b3b;
+     }
+     
+     QListView::item:selected {
+      background-color: #575757;
+      color: white;
      }
     </string>
    </property>
@@ -106,10 +129,10 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>530</x>
-        <y>0</y>
-        <width>201</width>
-        <height>51</height>
+        <x>570</x>
+        <y>10</y>
+        <width>101</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
@@ -168,7 +191,8 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../../../../../../Downloads/arrow-right_7242682.png</normaloff>../../../../../../Downloads/arrow-right_7242682.png</iconset>
+        <normaloff>/Users/sergeybudygin/AI_app_Qt-1/imagerow.png</normaloff>
+        <normalon>/Users/sergeybudygin/AI_app_Qt-1/imagerow.png</normalon>/Users/sergeybudygin/AI_app_Qt-1/imagerow.png</iconset>
       </property>
       <property name="iconSize">
        <size>
