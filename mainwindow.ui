@@ -82,7 +82,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="icon">
@@ -191,8 +191,8 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>/Users/sergeybudygin/AI_app_Qt-1/imagerow.png</normaloff>
-        <normalon>/Users/sergeybudygin/AI_app_Qt-1/imagerow.png</normalon>/Users/sergeybudygin/AI_app_Qt-1/imagerow.png</iconset>
+        <normaloff>imagerow.png</normaloff>
+        <normalon>imagerow.png</normalon>imagerow.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -228,9 +228,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
+        <y>30</y>
         <width>1101</width>
-        <height>561</height>
+        <height>541</height>
        </rect>
       </property>
       <property name="html">
@@ -248,9 +248,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>1140</x>
-        <y>10</y>
+        <y>30</y>
         <width>191</width>
-        <height>561</height>
+        <height>541</height>
        </rect>
       </property>
      </widget>

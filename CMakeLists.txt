@@ -1,6 +1,26 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(ai-qt-app VERSION 0.1 LANGUAGES CXX)
+project(ai-qt-app VERSION 0.1 LANGUAGES C CXX)
+# FOR DB
+
+include(FetchContent)
+FetchContent_Declare(sqlite3 URL https://www.sqlite.org/2024/sqlite-amalgamation-3450300.zip)
+FetchContent_MakeAvailable(sqlite3)
+
+# Set the path to the SQLite amalgamation directory
+set(SQLITE "${CMAKE_SOURCE_DIR}/build/_deps/sqlite3-src")
+
+# Include the SQLite amalgamation directly into the project
+add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c) 
+
+# Add include directories for SQLite
+target_include_directories(sqlite3 PUBLIC ${SQLITE})
+
+# # Define the executable and its source files
+# add_executable(summarization main.cpp database.h)
+
+# # Link the SQLite library with our project
+# target_link_libraries(summarization PRIVATE sqlite3)
 #include(FetchContent)
 #set(BOOST_INCLUDE_LIBRARIES json)
 #set(BOOST_ENABLE_CMAKE ON)
@@ -23,26 +43,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# FOR DB
 
-# include(FetchContent)
-# FetchContent_Declare(sqlite3 URL https://www.sqlite.org/2024/sqlite-amalgamation-3450300.zip)
-# FetchContent_MakeAvailable(sqlite3)
-
-# # Set the path to the SQLite amalgamation directory
-# set(SQLITE "${CMAKE_SOURCE_DIR}/build/_deps/sqlite3-src")
-
-# # Include the SQLite amalgamation directly into the project
-# add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c) 
-
-# # Add include directories for SQLite
-# target_include_directories(sqlite3 PUBLIC ${SQLITE})
-
-# # Define the executable and its source files
-# add_executable(summarization main.cpp database.h)
-
-# # Link the SQLite library with our project
-# target_link_libraries(summarization PRIVATE sqlite3)
 
  
 
@@ -62,11 +63,9 @@ set(PROJECT_SOURCES
         resetwarningwindow.cpp
         resetwarningwindow.h
         resetwarningwindow.ui
-        LoginWindow.cpp
-        LoginWindow.h
         # requestsToBackEnd.cpp
         # requestsToBackend.h
-        # database.h
+        database.h
 
         ${TS_FILES}
 )
@@ -78,8 +77,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         sendconfirmwindow.h sendconfirmwindow.cpp sendconfirmwindow.ui
         resetwarningwindow.h resetwarningwindow.cpp resetwarningwindow.ui
         AuthManager.h AuthManager.cpp
-        LoginWindow.h LoginWindow.cpp
+
         login.ui
+        newloginwindow.h newloginwindow.cpp newloginwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ai-qt-app APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -105,7 +105,9 @@ endif()
 set (BOOST_ROOT "/Users/sergeybudygin/Desktop/boost_1_85_0") # Путь к библиотеке Boost
 find_package(Boost REQUIRED )
 include_directories( ${Boost_INCLUDE_DIRS} )
-target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${Boost_FILESYSTEM_LIBRARY})
+target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
+                                        ${Boost_FILESYSTEM_LIBRARY}
+                                        sqlite3) #тууууут что-то
 
 # target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
 

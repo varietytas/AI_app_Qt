@@ -59,7 +59,7 @@ public:
         std::string query = "SELECT * FROM text;";
         std::vector<UserInfo> data;
         exit = sqlite3_exec(DB, query.c_str(), textCallback, &data, &messaggeError);
-
+        
         return data;
     }
 
