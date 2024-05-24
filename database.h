@@ -1,7 +1,7 @@
 #include <sqlite3.h>
 #include <string>
 #include <vector>
- 
+#include <iostream> 
 
 struct UserInfo
 {
@@ -11,7 +11,6 @@ struct UserInfo
     std::string chanelid;
     std::string token;
 };
-
 
 class Database
 {
@@ -61,6 +60,14 @@ public:
         exit = sqlite3_exec(DB, query.c_str(), textCallback, &data, &messaggeError);
         
         return data;
+    }
+    bool getUserByEmailAndPassword(const std::string& email, const std::string& password)
+    {
+        char* messaggeError;
+        std::vector<UserInfo> data;
+        std::string query = "SELECT * FROM text WHERE email = '" + email + "' AND token = '" + password + "'";
+        exit = sqlite3_exec(DB, query.c_str(), textCallback, &data, &messaggeError);
+        return !data.empty();
     }
 
 private:
