@@ -1,6 +1,6 @@
 #include "mainwindow.h"
-// #include <boost/json.hpp>
-// #include "requestsToBackend.h"
+#include <boost/json.hpp>
+#include "requestsToBackend.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
@@ -8,7 +8,8 @@
 #include "database.h"
 #include "NewLoginWindow.h"
 #include "AuthManager.h"
-// namespace json = boost::json;       // from <boost/json.hpp>
+
+namespace json = boost::json;       // from <boost/json.hpp>
 
 int main(int argc, char *argv[])
 {
