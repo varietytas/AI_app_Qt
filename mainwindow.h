@@ -5,6 +5,7 @@
 #include "sendconfirmwindow.h"
 #include "resetwarningwindow.h"
 #include <QStringListModel>
+#include "requestsToBackend.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +19,7 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     void defaultResize();
+    void replyMessage(QNetworkReply * reply);
 
 private slots:
     void on_pushButton_Done_clicked();
