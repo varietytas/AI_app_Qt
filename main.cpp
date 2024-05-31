@@ -2,7 +2,7 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
-#include "NewLoginWindow.h"
+#include "newloginwindow.h"
 
 int main(int argc, char *argv[])
 {
