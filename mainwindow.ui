@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1404</width>
-    <height>652</height>
+    <width>1379</width>
+    <height>636</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -82,7 +82,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="icon">
@@ -263,71 +263,96 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </attribute>
      <attribute name="title">
       <string>Guide</string>
-      
      </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout">
-  <item>
-   <widget class="QLabel" name="label555">
-    <property name="text">
-     <string>Привет, дорогой пользователь!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_2555">
-    <property name="text">
-     <string>Эта страница - ваш путеводитель по работе с нашим сервисом.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_3555">
-    <property name="text">
-     <string>В разделе "Generate" вы можете легко создать пост для своего Telegram канала.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_4555">
-    <property name="text">
-     <string>Затем вы можете отредактировать его в CMS, используя удобный интерфейс.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_5555">
-    <property name="text">
-     <string>Нажмите "Done", чтобы отправить пост в ваш Telegram канал. </string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_6555">
-    <property name="text">
-     <string>Не забудьте добавить бота в свой канал и дать ему доступ к публикации.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
- </layout>
-
+     <widget class="QWidget" name="tab_3" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_prev">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>290</y>
+        <width>90</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Prev</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>imagerow.png</normaloff>
+        <normalon>imagerow.png</normalon>imagerow.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_next">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>300</y>
+        <width>90</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Next</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>imagerow.png</normaloff>
+        <normalon>imagerow.png</normalon>imagerow.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textbox_guid">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>120</y>
+        <width>800</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>800</width>
+        <height>400</height>
+       </size>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
