@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-# Add boost lib source
+# Add boost lib source>>
 set(BOOST_INCLUDE_LIBRARIES asio beast json)
 set(BOOST_ENABLE_CMAKE ON)
 
@@ -20,8 +20,8 @@ set(FETCHCONTENT_QUIET FALSE) # Print downloading progress
 FetchContent_Declare(
     Boost
     URL https://github.com/boostorg/boost/releases/download/boost-1.85.0/boost-1.85.0-cmake.7z
-    USES_TERMINAL_DOWNLOAD TRUE 
-    GIT_PROGRESS TRUE   
+    USES_TERMINAL_DOWNLOAD TRUE
+    GIT_PROGRESS TRUE
     DOWNLOAD_NO_EXTRACT FALSE
 )
 
@@ -35,10 +35,10 @@ FetchContent_Declare(
 )
 
 # Set the path to the SQLite amalgamation directory
-set(SQLITE "${CMAKE_SOURCE_DIR}/build/_deps/sqlite3-src")
+set(SQLITE "${CMAKE_SOURCE_DIR}/cmake-build-debug/_deps/sqlite3-src")
 
 # Include the SQLite amalgamation directly into the project
-add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c) 
+add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c)
 
 # Add include directories for SQLite
 target_include_directories(sqlite3 PUBLIC ${SQLITE})
