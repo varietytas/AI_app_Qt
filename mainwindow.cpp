@@ -122,8 +122,7 @@ QString yourCur =" руб";
 int yourMoney = 0;
 void MainWindow::on_pushB1111utton_generate_clicked(){
     yourMoney += rand() % 1000;
-    std::string moneyYourStr = std::to_string(yourMoney);
-    std::cout << moneyYourStr << '\n';
+    QString moneyYourStr = QString::number(yourMoney);
     if (yourMoney >= 10000){
         yourCur =" $";
         yourMoney = 0;
@@ -132,5 +131,5 @@ void MainWindow::on_pushB1111utton_generate_clicked(){
         
     // std::string stryourCoin1 = "43";
     // QString text = stryourCoin1;
-    ui->textbox_response_2->setText(moneyYourStr); 
+    ui->textbox_response_2->setText(moneyYourStr +yourCur); 
 }
