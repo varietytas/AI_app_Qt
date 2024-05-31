@@ -47,23 +47,13 @@ add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c)
 # Add include directories for SQLite
 target_include_directories(sqlite3 PUBLIC ${SQLITE})
 
-# Dowload the json lib
-FetchContent_Declare(
-       json
-       GIT_REPOSITORY https://github.com/nlohmann/json.git
-       GIT_PROGRESS TRUE
-)
-set(JSON "${CMAKE_SOURCE_DIR}/build/_deps/json-src")
 
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
-FetchContent_MakeAvailable(
-    sqlite3
-    json
-)
-include_directories(
-    ${Boost_INCLUDE_DIR}
-    "${JSON}/include"
-)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
@@ -84,13 +74,7 @@ set(PROJECT_SOURCES
         resetwarningwindow.ui
         newloginwindow.cpp
         newloginwindow.h
-        newloginwindow.ui
-        AuthManager.cpp
-        AuthManager.h
-        requestsToBackend.cpp
-        requestsToBackend.h
         database.h
-
         ${TS_FILES}
 )
 
@@ -98,6 +82,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ai-qt-app
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        sendconfirmwindow.h sendconfirmwindow.cpp sendconfirmwindow.ui
+        resetwarningwindow.h resetwarningwindow.cpp resetwarningwindow.ui
+        newloginwindow.h newloginwindow.cpp newloginwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ai-qt-app APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -126,31 +113,43 @@ endif()
 # include_directories(SYSTEM ${Boost_INCLUDE_DIR})
 
 target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
-                                        ${Boost_LIBRARIES}
-                                        sqlite3
-                                        json)
+                                        ${Boost_FILESYSTEM_LIBRARY}
+                                        sqlite3) #тууууут что-то
+
+# target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
+
+# Find the Boost libraries
+#find_package(Boost REQUIRED COMPONENTS system program_options)
+#
+#include_directories(${Boost_INCLUDE_DIRS})
+#link_directories(${Boost_LIBRARY_DIRS})
+#target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${Boost_LIBRARIES})
+# Если библиотека найдена, то
+#target_include_directories (SYSTEM ${Boost_INCLUDE_DIR}) # подключаем заголовочные файлы
+#
+#target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ai-qt-app ${Boost_LIBRARIES})
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
-  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.ai-qt-app)
+set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.ai-qt-app)
 endif()
 set_target_properties(ai-qt-app PROPERTIES
-    ${BUNDLE_ID_OPTION}
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
+  ${BUNDLE_ID_OPTION}
+  MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+  MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+  MACOSX_BUNDLE TRUE
+  WIN32_EXECUTABLE TRUE
 )
 
 include(GNUInstallDirs)
 install(TARGETS ai-qt-app
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  BUNDLE DESTINATION .
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(ai-qt-app)
+  qt_finalize_executable(ai-qt-app)
 endif()

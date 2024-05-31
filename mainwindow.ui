@@ -255,7 +255,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="tab_3555">
      <attribute name="icon">
       <iconset>
        <normalon>../../../../../../Downloads/open-book_2702134.png</normalon>
@@ -263,7 +263,71 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </attribute>
      <attribute name="title">
       <string>Guide</string>
+      
      </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout">
+  <item>
+   <widget class="QLabel" name="label555">
+    <property name="text">
+     <string>Привет, дорогой пользователь!</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </item>
+  <item>
+   <widget class="QLabel" name="label_2555">
+    <property name="text">
+     <string>Эта страница - ваш путеводитель по работе с нашим сервисом.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </item>
+  <item>
+   <widget class="QLabel" name="label_3555">
+    <property name="text">
+     <string>В разделе "Generate" вы можете легко создать пост для своего Telegram канала.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </item>
+  <item>
+   <widget class="QLabel" name="label_4555">
+    <property name="text">
+     <string>Затем вы можете отредактировать его в CMS, используя удобный интерфейс.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </item>
+  <item>
+   <widget class="QLabel" name="label_5555">
+    <property name="text">
+     <string>Нажмите "Done", чтобы отправить пост в ваш Telegram канал. </string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </item>
+  <item>
+   <widget class="QLabel" name="label_6555">
+    <property name="text">
+     <string>Не забудьте добавить бота в свой канал и дать ему доступ к публикации.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </item>
+ </layout>
+
     </widget>
    </widget>
   </widget>

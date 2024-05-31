@@ -85,3 +85,5 @@ Develop a Qt C++ application that provides user login/registration functionality
 - Ensure testing of the application for compliance with functional requirements and security.
 - Provide error and exception handling to improve application reliability.
 - Verify compliance with data protection requirements when collecting, storing, and processing user information.
+
+

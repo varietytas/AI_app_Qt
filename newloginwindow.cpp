@@ -41,6 +41,7 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
     QString email = ui->lineEditemailreg->text();
     QString password = ui->lineEditPassword_1->text();
     QString channel = ui->lineEditchannel->text();
+    
     // qDebug() << "Email: " << email;
     // qDebug() << "Password: " << password;
     // qDebug() << "channel: " << channel;
