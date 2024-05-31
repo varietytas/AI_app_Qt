@@ -16,6 +16,7 @@ add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c)
 # Add include directories for SQLite
 target_include_directories(sqlite3 PUBLIC ${SQLITE})
 
+
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
