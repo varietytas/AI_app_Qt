@@ -25,8 +25,11 @@ MainWindow::MainWindow(QWidget* parent)
     QJsonObject token = user.get_token();
     QJsonDocument doc(token);
     QString jsonString = QString::fromUtf8(doc.toJson());
+    QString answerPost = user.get_post_text("Напиши пост про породу корги для моего тг канала");
+
+
     QMessageBox dialog;
-    dialog.setText(jsonString);
+    dialog.setText(answerPost);
     dialog.exec();
     QStringList list;
     model=new QStringListModel;
