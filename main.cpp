@@ -10,9 +10,5 @@ int main(int argc, char *argv[])
     MainWindow window;
     window.show();
     return a.exec();
-//    NewLoginWindow loginWindow;
-//    loginWindow.show();
-
-//    return a.exec();
 }
 
