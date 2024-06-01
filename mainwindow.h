@@ -19,12 +19,12 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     void defaultResize();
-    void replyMessage(QNetworkReply * reply);
+    void replyMessage(QNetworkReply* reply);
 
 private slots:
     void on_pushButton_Done_clicked();
     void on_pushButton_Reset_clicked();
-    void on_textEdit_clicked(const QModelIndex &index);
+    void on_textEdit_clicked(const QModelIndex& index);
     void on_pushButton_CMS_clicked();
     void on_pushButton_generate_clicked();
 

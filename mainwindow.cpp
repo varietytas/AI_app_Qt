@@ -105,7 +105,4 @@ void MainWindow::on_pushButton_generate_clicked()
     // QString text = get_respones_from_yandex_gpt(text); // Вызываем функцию get_new() с полученным текстом
 
     ui->textbox_response->setText(text); 
-
 }
-
-
