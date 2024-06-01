@@ -20,9 +20,9 @@ public:
 
     AuthUser(QString email, QString password, QString token);
 
-    QJsonObject get_token();
+    void get_code();
     QString get_post_text(const QString& request);
-
+    bool checkIfUserExists();
 private:
     QString apiUrl= "http://127.0.0.1:5000";
     QJsonObject send_request(const QJsonObject& json_obj, const QString& url, const QString& method);

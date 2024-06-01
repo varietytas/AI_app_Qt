@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "database.h"
 #include <QCryptographicHash>
+#include "requestsToBackend.h"
 NewLoginWindow::NewLoginWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::NewLoginWindow)
 {
@@ -29,11 +30,21 @@ void NewLoginWindow::on_pushButtonLogin_clicked()
     Database db;
     db.createTables();
     std::string email1 = email.toStdString();
-    std::string hashedPassword = hashPassword(password).toStdString();
-    if (db.getUserByEmailAndPassword(email1, hashedPassword))
-    {
+    std::string hashedPassword = password.toStdString();
+//    if (db.getUserByEmailAndPassword(email1, hashedPassword))
+//    {
+//        setCentralWidget(new MainWindow(this));
+//    }
+    AuthUser user(email,password,password);
+    bool exists = user.checkIfUserExists();
+    if (exists){
         setCentralWidget(new MainWindow(this));
     }
+    else{
+        qDebug() << "User does not exist";
+    }
+
+
 }
 
 void NewLoginWindow::on_pushButtonRegister_clicked()
@@ -54,5 +65,8 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
     std::string channel1 = channel.toStdString();
     std::string name1 = name.toStdString();
     db.addText(name1, email1, channel1, hashedPassword);
+    AuthUser newUser = *new AuthUser(email,password,name);
+    newUser.get_code();
+
     setCentralWidget(new MainWindow(this));
 }

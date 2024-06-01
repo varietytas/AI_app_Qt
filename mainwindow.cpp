@@ -38,9 +38,6 @@ MainWindow::MainWindow(QWidget* parent)
 
 
     AuthUser user(QString("email"),QString("login"),QString("password"));
-    QJsonObject token = user.get_token();
-    QJsonDocument doc(token);
-    QString jsonString = QString::fromUtf8(doc.toJson());
     QString answerPost = user.get_post_text("Напиши пост про породу корги для моего тг канала");
 
 

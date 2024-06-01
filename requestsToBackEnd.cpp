@@ -1,19 +1,24 @@
 #include "requestsToBackend.h"
 #include <QNetworkAccessManager>
+#include <string>
+#include <QString>
+std::string QStringToStdString(const QString& qStr) {
+    QByteArray byteArray = qStr.toUtf8();
+    return std::string(byteArray.constData(), byteArray.length());
+}
+
 AuthUser::AuthUser(QString email, QString password, QString token)
         : email(email), password(password), token(token) {}
 
-QJsonObject AuthUser::get_token() {
+void AuthUser::get_code() {
     QJsonObject json_obj;
     json_obj["email"] = this->email;
     json_obj["password"] = this->password;
 
-    QJsonObject response_json = send_request(json_obj, apiUrl + "/login", "POST");
-    if (response_json.contains("token")) {
-        this->token = response_json["token"].toString();
-    }
+    QJsonObject response_json = send_request(json_obj, "http://127.0.0.1:5000/email", "POST");
 
-    return response_json;
+
+//    return response_json;
 }
 
 QString AuthUser::get_post_text(const QString& request) {
@@ -26,6 +31,23 @@ QString AuthUser::get_post_text(const QString& request) {
 
     return text;
 }
+
+bool AuthUser::checkIfUserExists(){
+    QJsonObject json_obj;
+    json_obj["email"] = this->email;
+    json_obj["password"] = this->password;
+    QJsonObject response_json = send_request(json_obj, "http://127.0.0.1:5000/check_email", "POST");
+    QString response_message = response_json["message"].toString();
+    std::string message = QStringToStdString(response_message);
+    if (message=="Yes"){
+        return true;
+    }
+    return false;
+}
+
+
+
+
 
 QJsonObject AuthUser::send_request(const QJsonObject& json_obj, const QString& url, const QString& method) {
     QUrl url1 = QUrl(url);
@@ -62,4 +84,6 @@ QJsonObject AuthUser::send_request(const QJsonObject& json_obj, const QString& u
 
     return response_json;
 }
+
+
 
