@@ -27,6 +27,7 @@ void NewLoginWindow::on_pushButtonLogin_clicked()
     qDebug() << "Email: " << email;
     qDebug() << "Password: " << password;
     Database db;
+    db.createTables();
     std::string email1 = email.toStdString();
     std::string hashedPassword = hashPassword(password).toStdString();
     if (db.getUserByEmailAndPassword(email1, hashedPassword))

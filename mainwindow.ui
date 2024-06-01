@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1404</width>
-    <height>652</height>
+    <width>1379</width>
+    <height>636</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -215,6 +215,50 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_coin">
+     <attribute name="icon">
+      <iconset theme="accessories-text-editor">
+       <normalon>../../../../../../Downloads/artificial-intelligence_11068885.png</normalon>
+      </iconset>
+     </attribute>
+     <attribute name="title">
+      <string>Coin</string>
+     </attribute>
+     <widget class="QPushButton" name="pushB1111utton_generate">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>110</y>
+        <width>681</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>IMG_0556.heic</normaloff>
+        <normalon>IMG_0556.heic</normalon>IMG_0556.heic</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textbox_response_2">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>30</y>
+        <width>491</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="icon">
       <iconset>
@@ -263,71 +307,86 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </attribute>
      <attribute name="title">
       <string>Guide</string>
-      
      </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout">
-  <item>
-   <widget class="QLabel" name="label555">
-    <property name="text">
-     <string>Привет, дорогой пользователь!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_2555">
-    <property name="text">
-     <string>Эта страница - ваш путеводитель по работе с нашим сервисом.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_3555">
-    <property name="text">
-     <string>В разделе "Generate" вы можете легко создать пост для своего Telegram канала.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_4555">
-    <property name="text">
-     <string>Затем вы можете отредактировать его в CMS, используя удобный интерфейс.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_5555">
-    <property name="text">
-     <string>Нажмите "Done", чтобы отправить пост в ваш Telegram канал. </string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_6555">
-    <property name="text">
-     <string>Не забудьте добавить бота в свой канал и дать ему доступ к публикации.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
- </layout>
-
+     <widget class="QPushButton" name="pushButton_prev">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>290</y>
+        <width>90</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Prev</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_next">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>300</y>
+        <width>90</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Next</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textbox_guid">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>120</y>
+        <width>800</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>800</width>
+        <height>400</height>
+       </size>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt;Рады приветствовать вас в AI APP, вашем персональном помощнике для создания контента для Telegram-каналов.&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
