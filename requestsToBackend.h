@@ -26,6 +26,7 @@ public:
 
     QString make_strapi_post(const QString& request);
     QJsonArray get_strapi_posts();
+    QJsonObject get_token();
   
 private:
     QString apiUrl= "http://127.0.0.1:5000";

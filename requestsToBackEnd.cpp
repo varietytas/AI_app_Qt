@@ -144,3 +144,16 @@ QJsonArray AuthUser::get_strapi_posts() {
 }
 
 
+
+QJsonObject AuthUser::get_token() {
+    QJsonObject json_obj;
+    json_obj["email"] = this->email;
+    json_obj["password"] = this->password;
+
+    QJsonObject response_json = send_request(json_obj, apiUrl + "/login", "POST");
+    if (response_json.contains("token")) {
+        this->token = response_json["token"].toString();
+    }
+
+    return response_json;
+}
