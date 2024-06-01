@@ -16,23 +16,21 @@ QJsonObject AuthUser::get_token() {
     return response_json;
 }
 
-QJsonObject AuthUser::get_post_text(const QString& request) {
+QString AuthUser::get_post_text(const QString& request) {
     QJsonObject json_obj;
     json_obj["token"] = this->token;
-    json_obj["request"] = request;
+    json_obj["question"] = request;
 
-    QJsonObject response_json = send_request(json_obj, apiUrl + "/text_request", "POST");
-    if (response_json.contains("token")) {
-        this->token = response_json["token"].toString();
-    }
+    QJsonObject response_json = send_request(json_obj, "http://127.0.0.1:5000/yandexgpt", "POST");
+    QString text = response_json["message"].toString();
 
-    return response_json;
+    return text;
 }
 
 QJsonObject AuthUser::send_request(const QJsonObject& json_obj, const QString& url, const QString& method) {
     QUrl url1 = QUrl(url);
     QNetworkRequest request(url1);
-    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
+    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/json");
 
     QNetworkAccessManager networkManager;
 
@@ -64,3 +62,4 @@ QJsonObject AuthUser::send_request(const QJsonObject& json_obj, const QString& u
 
     return response_json;
 }
+

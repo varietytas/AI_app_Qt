@@ -11,6 +11,24 @@
 #include <QMessageBox>
 #include "requestsToBackend.h"
 
+<<<<<<< HEAD
+=======
+
+QStringList mainGuidlist = {
+    "Шаг 1: Добавьте нашего бота в ваш канал: [@ai_app_1_bot](https://t.me/ai_app_1_bot).",
+    "Шаг 2: Отправьте сообщение боту [@LeadConverterToolkitBot](https://t.me/LeadConverterToolkitBot) и укажите ваш channel id (ID вашего Telegram-канала).", 
+    "Шаг 3: На главной странице введите название вашего поста и нажмите кнопку \"Сгенерировать\".  Yandex GPT сгенерирует для вас текст.", 
+    "Шаг 4: Используйте кнопки \"Reset\" для очистки текста или \"Generate\" для перегенерации нового варианта.", 
+    "Шаг 5: Нажмите кнопку \"Edit\", зарегистрируйтесь в Strapi (если еще не сделали этого), войдите в проект \"Blogs\" и отформатируйте, отредактируйте пост. Сохраните изменения и опубликуйте пост в Strapi.", 
+    "Шаг 6: Вернитесь в приложение AI APP и нажмите кнопку \"Done\": бот отправит ваш пост в ваш канал.", 
+    "Шаг 7: Посмотреть историю ваших постов можно в Strapi или на специальной странице \"History\".", 
+    "Шаг 8: Нажмите на название поста справа, и слева отобразится предыдущий пост.", 
+    "Наслаждайтесь созданием контента с помощью AI APP!"
+};
+int lenMainGuidlist = mainGuidlist.size();
+int currentGuid = 0;
+
+>>>>>>> a12d029292973d779f48dea014be0144b2933749
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -25,9 +43,18 @@ MainWindow::MainWindow(QWidget* parent)
     QJsonObject token = user.get_token();
     QJsonDocument doc(token);
     QString jsonString = QString::fromUtf8(doc.toJson());
+<<<<<<< HEAD
     //QMessageBox dialog;
     //dialog.setText(jsonString);
     //dialog.exec();
+=======
+    QString answerPost = user.get_post_text("Напиши пост про породу корги для моего тг канала");
+
+
+    QMessageBox dialog;
+    dialog.setText(answerPost);
+    dialog.exec();
+>>>>>>> a12d029292973d779f48dea014be0144b2933749
     QStringList list;
     model=new QStringListModel;
      
@@ -76,7 +103,6 @@ void MainWindow::defaultResize()
 
 void MainWindow::on_pushButton_Done_clicked()
 {
-    scw.show();
     ui->textbox_response->clear();
     ui->textedit_subject->clear();
 }
@@ -106,3 +132,40 @@ void MainWindow::on_pushButton_generate_clicked()
 
     ui->textbox_response->setText(text); 
 }
+<<<<<<< HEAD
+=======
+void MainWindow::on_pushButton_prev_clicked()
+{
+    currentGuid = (currentGuid-1)%lenMainGuidlist;
+    if (currentGuid < 0) currentGuid = 0; 
+
+    QString text = mainGuidlist[currentGuid];
+    ui->textbox_guid->setHtml(text); 
+
+}
+void MainWindow::on_pushButton_next_clicked()
+{
+    
+    QString text = mainGuidlist[currentGuid];
+    ui->textbox_guid->setHtml(text); 
+    currentGuid ++;
+    if (currentGuid == lenMainGuidlist) currentGuid = lenMainGuidlist-1;
+}
+
+QString yourCoin ="100";
+QString yourCur =" руб";
+int yourMoney = 0;
+void MainWindow::on_pushB1111utton_generate_clicked(){
+    yourMoney += rand() % 1000;
+    QString moneyYourStr = QString::number(yourMoney);
+    if (yourMoney >= 10000){
+        yourCur =" $";
+        yourMoney = 0;
+        scw.show();
+    }
+        
+    // std::string stryourCoin1 = "43";
+    // QString text = stryourCoin1;
+    ui->textbox_response_2->setText(moneyYourStr +yourCur); 
+}
+>>>>>>> a12d029292973d779f48dea014be0144b2933749
