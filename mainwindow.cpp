@@ -29,14 +29,11 @@ QStringList mainGuidlist = {
 int lenMainGuidlist = mainGuidlist.size();
 int currentGuid = 0;
 void processJsonResponse(const QJsonArray &jsonArray, QStringList &postsList, QStringList &titlesList) {
-        qDebug() <<jsonArray.empty();
     for (const QJsonValue &value : jsonArray) {
-        qDebug() << "processJsonResponse: ";
         QJsonArray innerArray = value.toArray();
         if (innerArray.size() == 2) {
             QString post = innerArray.at(0).toString();
             QString title = innerArray.at(1).toString();
-            qDebug() << "title: " << title;
             postsList.append(post);
             titlesList.append(title);
         }
