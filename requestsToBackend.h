@@ -1,35 +1,30 @@
-#ifndef AUTH_REQUESTS_H
-#define AUTH_REQUESTS_H
 
-#include <iostream>
-#include <boost/beast.hpp>
-#include <boost/asio.hpp>
-#include <boost/json.hpp>
-#include <boost/asio/ssl.hpp>
-#include <boost/asio/connect.hpp>
-#include <boost/asio/ip/tcp.hpp>
+#ifndef REQUESTSTOBACKEND_H
+#define REQUESTSTOBACKEND_H
 
-namespace beast = boost::beast;
-namespace http = beast::http;
-namespace net = boost::asio;
-namespace json = boost::json;
-using tcp = net::ip::tcp;
+#include <QObject>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QUrl>
+#include <QEventLoop>
+class AuthUser {
 
-extern std::string host;
-extern std::string port;
-extern std::string target;
-extern std::string login;
-extern std::string password;
-extern std::string api_url;
+public:
+    QString email;
+    QString password;  // In md5 hash
+    QString token;
 
-json::value send_request(const json::value& json_obj, const std::string& url, const std::string& method);
 
-struct AuthUser {
-    std::string email;
-    std::string password; // in md5 hash
-    std::string token;
-    json::value get_token();
-    json::value get_post_text(std::string request);
+    AuthUser(QString email, QString password, QString token);
+
+    QJsonObject get_token();
+    QString get_post_text(const QString& request);
+
+private:
+    QString apiUrl= "http://127.0.0.1:5000";
+    QJsonObject send_request(const QJsonObject& json_obj, const QString& url, const QString& method);
 };
-
-#endif /* AUTH_REQUESTS_H */
+#endif

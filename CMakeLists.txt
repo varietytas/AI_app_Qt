@@ -1,6 +1,32 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(ai-qt-app VERSION 0.1 LANGUAGES C CXX)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+
+# Add boost lib source>>
+set(BOOST_INCLUDE_LIBRARIES asio beast json)
+set(BOOST_ENABLE_CMAKE ON)
+
+include(FetchContent)
+set(FETCHCONTENT_QUIET FALSE) # Print downloading progress
+# Download and extract boost lib from GitHub
+
+
+# # Set the path to the Boost lib (just in case)
+# set(BOOST_ROOT "${CMAKE_SOURCE_DIR}/build/_deps/boost-src")
+
+# Dowload and extract sqlite3
+FetchContent_Declare(
+    sqlite3
+    URL https://www.sqlite.org/2024/sqlite-amalgamation-3450300.zip
+)
 # FOR DB
 
 include(FetchContent)
@@ -8,10 +34,10 @@ FetchContent_Declare(sqlite3 URL https://www.sqlite.org/2024/sqlite-amalgamation
 FetchContent_MakeAvailable(sqlite3)
 
 # Set the path to the SQLite amalgamation directory
-set(SQLITE "${CMAKE_SOURCE_DIR}/build/_deps/sqlite3-src")
+set(SQLITE "${CMAKE_SOURCE_DIR}/cmake-build-debug/_deps/sqlite3-src")
 
 # Include the SQLite amalgamation directly into the project
-add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c) 
+add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c)
 
 # Add include directories for SQLite
 target_include_directories(sqlite3 PUBLIC ${SQLITE})
@@ -25,8 +51,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools Core Network)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools Core Network)
 
 set(TS_FILES ai-qt-app_en_GB.ts)
 
@@ -43,6 +69,8 @@ set(PROJECT_SOURCES
         resetwarningwindow.ui
         newloginwindow.cpp
         newloginwindow.h
+        requestsToBackEnd.cpp
+        requestsToBackend.h
         database.h
         ${TS_FILES}
 )
@@ -76,12 +104,10 @@ else()
 
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
-set (BOOST_ROOT "/Users/sergeybudygin/Desktop/boost_1_85_0") # Путь к библиотеке Boost
-find_package(Boost REQUIRED )
-include_directories( ${Boost_INCLUDE_DIRS} )
 target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
-                                        ${Boost_FILESYSTEM_LIBRARY}
-                                        sqlite3) #тууууут что-то
+        Qt${QT_VERSION_MAJOR}::Network
+        Qt${QT_VERSION_MAJOR}::Core
+        sqlite3) #тууууут что-то
 
 # target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
 

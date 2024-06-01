@@ -8,6 +8,8 @@
 #include <QUrl>
 #include <QDesktopServices>
 #include <iostream>
+#include <QMessageBox>
+#include "requestsToBackend.h"
 
 
 QStringList mainGuidlist = {
@@ -29,7 +31,22 @@ MainWindow::MainWindow(QWidget* parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    std::cout << "sdfghjklqwertyui";
+    QNetworkAccessManager *network =  new QNetworkAccessManager(this);
+    QObject::connect(network, &QNetworkAccessManager::finished, this, &MainWindow::replyMessage);
+    network -> get(QNetworkRequest(QUrl("https://qna.habr.com")));
 
+
+    AuthUser user(QString("email"),QString("login"),QString("password"));
+    QJsonObject token = user.get_token();
+    QJsonDocument doc(token);
+    QString jsonString = QString::fromUtf8(doc.toJson());
+    QString answerPost = user.get_post_text("Напиши пост про породу корги для моего тг канала");
+
+
+    QMessageBox dialog;
+    dialog.setText(answerPost);
+    dialog.exec();
     QStringList list;
     model=new QStringListModel;
      
@@ -42,6 +59,15 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->pushButton_generate, &QPushButton::clicked, this, &MainWindow::on_pushButton_generate_clicked);
 
     
+}
+
+void MainWindow::replyMessage(QNetworkReply * reply)
+{
+//    std::cout << reply->readAll().toStdString();
+//    qDebug() << reply->readAll();
+    QMessageBox dialog;
+    dialog.setText(reply->readAll());
+    dialog.exec();
 }
 void MainWindow::on_textEdit_clicked(const QModelIndex &index)
 {
