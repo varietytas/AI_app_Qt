@@ -19,9 +19,11 @@ public:
 
 
     AuthUser(QString email, QString password, QString token);
-
-    QJsonObject get_token();
+    void sendPost(QString message);
+    QString get_code(QString tg_id);
     QString get_post_text(const QString& request);
+    bool checkIfUserExists();
+
     QString make_strapi_post(const QString& request);
     QJsonArray get_strapi_posts();
   

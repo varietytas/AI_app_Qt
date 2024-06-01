@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "database.h"
 #include <QCryptographicHash>
+#include "requestsToBackend.h"
 #include <QMainWindow>
 
 NewLoginWindow::NewLoginWindow(QWidget *parent)
@@ -31,11 +32,21 @@ void NewLoginWindow::on_pushButtonLogin_clicked()
     Database db;
     db.createTables();
     std::string email1 = email.toStdString();
-    std::string hashedPassword = hashPassword(password).toStdString();
-    if (db.getUserByEmailAndPassword(email1, hashedPassword))
-    {
+    std::string hashedPassword = password.toStdString();
+//    if (db.getUserByEmailAndPassword(email1, hashedPassword))
+//    {
+//        setCentralWidget(new MainWindow(this));
+//    }
+    AuthUser user(email,password,password);
+    bool exists = user.checkIfUserExists();
+    if (exists){
         setCentralWidget(new MainWindow(this));
     }
+    else{
+        qDebug() << "User does not exist";
+    }
+
+
 }
 
 void NewLoginWindow::on_pushButtonRegister_clicked()
@@ -44,7 +55,7 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
     QString email = ui->lineEditemailreg->text();
     QString password = ui->lineEditPassword_1->text();
     QString channel = ui->lineEditchannel->text();
-    
+
     // qDebug() << "Email: " << email;
     // qDebug() << "Password: " << password;
     // qDebug() << "channel: " << channel;
@@ -56,5 +67,9 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
     std::string channel1 = channel.toStdString();
     std::string name1 = name.toStdString();
     db.addText(name1, email1, channel1, hashedPassword);
+    AuthUser newUser = *new AuthUser(email,password,name);
+//    newUser.sendPost(email);
+    QString answer = newUser.get_code(channel);
+    // ответ либо ALREADY REGISTERED, что означает, что пользователь уже был зареган, или REGISTERED, значит, что все ок
     setCentralWidget(new MainWindow(this));
 }
