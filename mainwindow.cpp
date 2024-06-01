@@ -108,17 +108,18 @@ void MainWindow::on_pushButton_CMS_clicked()
 }
 
 QString get_respones_from_yandex_gpt(QString &text){
-    return text;
+    AuthUser user(QString("email"),QString("login"),QString("password"));
+    QString answerPost = user.get_post_text(text);
+    user.make_strapi_post(answerPost);
+    return answerPost;
 }
 
 void MainWindow::on_pushButton_generate_clicked()
 {
-    QString text = ui->textedit_subject->toPlainText(); // Получаем текст из textEdit_subject
-    // get_respones_from_yandex_gpt(text); // Отправляем текст в функцию get_new()
-    // rww.show();
-    // QString text = get_respones_from_yandex_gpt(text); // Вызываем функцию get_new() с полученным текстом
+    QString text = ui->textedit_subject->toPlainText();
+    QString response = get_respones_from_yandex_gpt(text); 
+    ui->textbox_response->setText(response); 
 
-    ui->textbox_response->setText(text); 
 }
 // void MainWindow::on_pushButton_prev_clicked()
 // {
