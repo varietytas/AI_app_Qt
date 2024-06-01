@@ -30,8 +30,18 @@ add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c)
 target_include_directories(sqlite3 PUBLIC ${SQLITE})
 
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools Core Network)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools Core Network)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS 
+                                                Widgets
+                                                LinguistTools # Not required
+                                                Core
+                                                Network
+                                                Test)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
+                                                Widgets
+                                                LinguistTools # Not required
+                                                Core
+                                                Network
+                                                Test)
 
 set(TS_FILES ai-qt-app_en_GB.ts)
 
@@ -52,6 +62,8 @@ set(PROJECT_SOURCES
         requestsToBackEnd.cpp
         requestsToBackend.h
         database.h
+        "tests/tests.cpp"
+        "tests/tests.hpp"
 
         ${TS_FILES}
 )
@@ -86,6 +98,7 @@ endif()
 target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
                                         Qt${QT_VERSION_MAJOR}::Network
                                         Qt${QT_VERSION_MAJOR}::Core
+                                        Qt${QT_VERSION_MAJOR}::Test
                                         sqlite3)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
