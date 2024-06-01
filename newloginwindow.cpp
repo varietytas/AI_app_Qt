@@ -53,7 +53,7 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
     QString email = ui->lineEditemailreg->text();
     QString password = ui->lineEditPassword_1->text();
     QString channel = ui->lineEditchannel->text();
-    
+
     // qDebug() << "Email: " << email;
     // qDebug() << "Password: " << password;
     // qDebug() << "channel: " << channel;
@@ -66,6 +66,7 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
     std::string name1 = name.toStdString();
     db.addText(name1, email1, channel1, hashedPassword);
     AuthUser newUser = *new AuthUser(email,password,name);
+//    newUser.sendPost(email);
     QString answer = newUser.get_code(channel);
     // ответ либо ALREADY REGISTERED, что означает, что пользователь уже был зареган, или REGISTERED, значит, что все ок
     setCentralWidget(new MainWindow(this));

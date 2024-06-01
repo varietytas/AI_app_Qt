@@ -19,7 +19,7 @@ public:
 
 
     AuthUser(QString email, QString password, QString token);
-
+    void sendPost(QString message);
     QString get_code(QString tg_id);
     QString get_post_text(const QString& request);
     bool checkIfUserExists();

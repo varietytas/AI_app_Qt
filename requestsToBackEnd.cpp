@@ -15,18 +15,25 @@ QString AuthUser::get_code(QString tg_id) {
     json_obj["email"] = this->email;
     json_obj["password"] = this->password;
     json_obj["tg_id"] = tg_id;
-    QJsonObject response_json = send_request(json_obj, "http://127.0.0.1:5000/email", "POST");
+    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/email", "POST");
     QString message = response_json["message"].toString();
     return message;
 //    return response_json;
 }
+void AuthUser::sendPost(QString message){
+    QJsonObject json_obj;
+    json_obj["email"] = this->email;
+    json_obj["password"] = this->password;
+    json_obj["message"] = message;
+    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/send_message", "POST");
 
+}
 QString AuthUser::get_post_text(const QString& request) {
     QJsonObject json_obj;
     json_obj["token"] = this->token;
     json_obj["question"] = request;
 
-    QJsonObject response_json = send_request(json_obj, "http://127.0.0.1:5000/yandexgpt", "POST");
+    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/yandexgpt", "POST");
     QString text = response_json["message"].toString();
 
     return text;
@@ -36,7 +43,7 @@ bool AuthUser::checkIfUserExists(){
     QJsonObject json_obj;
     json_obj["email"] = this->email;
     json_obj["password"] = this->password;
-    QJsonObject response_json = send_request(json_obj, "http://127.0.0.1:5000/check_email", "POST");
+    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/check_email", "POST");
     QString response_message = response_json["message"].toString();
     std::string message = QStringToStdString(response_message);
     if (message=="Yes"){
