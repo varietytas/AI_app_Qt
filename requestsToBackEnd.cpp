@@ -10,14 +10,14 @@ std::string QStringToStdString(const QString& qStr) {
 AuthUser::AuthUser(QString email, QString password, QString token)
         : email(email), password(password), token(token) {}
 
-void AuthUser::get_code() {
+QString AuthUser::get_code(QString tg_id) {
     QJsonObject json_obj;
     json_obj["email"] = this->email;
     json_obj["password"] = this->password;
-
+    json_obj["tg_id"] = tg_id;
     QJsonObject response_json = send_request(json_obj, "http://127.0.0.1:5000/email", "POST");
-
-
+    QString message = response_json["message"].toString();
+    return message;
 //    return response_json;
 }
 
