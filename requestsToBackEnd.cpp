@@ -105,12 +105,11 @@ QString AuthUser::make_strapi_post(const QString& request) {
     return text;
 }
 
-QString AuthUser::get_strapi_posts() {
-
+QJsonArray AuthUser::get_strapi_posts() {
     QJsonObject mainObj;
     QJsonObject response_json = send_request(mainObj, "http://127.0.0.1:8080/strapi", "GET");
-    QString text = "Done";
-    return text;
+    QJsonArray lst = response_json["message"].toArray();
+    return lst;
 }
 
 

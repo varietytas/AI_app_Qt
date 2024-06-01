@@ -19,6 +19,7 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     void defaultResize();
+    void newHistory();
     void replyMessage(QNetworkReply* reply);
 
 private slots:
