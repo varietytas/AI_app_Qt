@@ -16,7 +16,6 @@ MainWindow::MainWindow(QWidget* parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    std::cout << "sdfghjklqwertyui";
     QNetworkAccessManager *network =  new QNetworkAccessManager(this);
     QObject::connect(network, &QNetworkAccessManager::finished, this, &MainWindow::replyMessage);
     network -> get(QNetworkRequest(QUrl("https://qna.habr.com")));
@@ -26,9 +25,9 @@ MainWindow::MainWindow(QWidget* parent)
     QJsonObject token = user.get_token();
     QJsonDocument doc(token);
     QString jsonString = QString::fromUtf8(doc.toJson());
-    QMessageBox dialog;
-    dialog.setText(jsonString);
-    dialog.exec();
+    //QMessageBox dialog;
+    //dialog.setText(jsonString);
+    //dialog.exec();
     QStringList list;
     model=new QStringListModel;
      
@@ -47,9 +46,9 @@ void MainWindow::replyMessage(QNetworkReply * reply)
 {
 //    std::cout << reply->readAll().toStdString();
 //    qDebug() << reply->readAll();
-    QMessageBox dialog;
-    dialog.setText(reply->readAll());
-    dialog.exec();
+    // QMessageBox dialog;
+    // dialog.setText(reply->readAll());
+    // dialog.exec();
 }
 void MainWindow::on_textEdit_clicked(const QModelIndex &index)
 {

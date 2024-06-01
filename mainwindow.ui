@@ -3,14 +3,14 @@
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="windowModality">
-   <enum>Qt::NonModal</enum>
+   <enum>Qt::WindowModality::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1404</width>
-    <height>652</height>
+    <width>1401</width>
+    <height>674</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -71,18 +71,18 @@
      <rect>
       <x>0</x>
       <y>-10</y>
-      <width>1381</width>
-      <height>591</height>
+      <width>1411</width>
+      <height>651</height>
      </rect>
     </property>
     <property name="tabPosition">
-     <enum>QTabWidget::West</enum>
+     <enum>QTabWidget::TabPosition::West</enum>
     </property>
     <property name="tabShape">
-     <enum>QTabWidget::Rounded</enum>
+     <enum>QTabWidget::TabShape::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="icon">
@@ -97,7 +97,7 @@
       <property name="geometry">
        <rect>
         <x>1210</x>
-        <y>230</y>
+        <y>260</y>
         <width>111</width>
         <height>81</height>
        </rect>
@@ -110,7 +110,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>60</y>
+        <y>90</y>
         <width>1151</width>
         <height>421</height>
        </rect>
@@ -119,9 +119,9 @@
      <widget class="QPlainTextEdit" name="textedit_subject">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>520</y>
-        <width>801</width>
+        <x>270</x>
+        <y>550</y>
+        <width>761</width>
         <height>51</height>
        </rect>
       </property>
@@ -129,9 +129,9 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>570</x>
-        <y>10</y>
-        <width>101</width>
+        <x>30</x>
+        <y>30</y>
+        <width>161</width>
         <height>41</height>
        </rect>
       </property>
@@ -149,8 +149,8 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>520</y>
-        <width>151</width>
+        <y>550</y>
+        <width>261</width>
         <height>51</height>
        </rect>
       </property>
@@ -168,7 +168,7 @@
       <property name="geometry">
        <rect>
         <x>1210</x>
-        <y>110</y>
+        <y>140</y>
         <width>111</width>
         <height>81</height>
        </rect>
@@ -180,8 +180,8 @@
      <widget class="QPushButton" name="pushButton_generate">
       <property name="geometry">
        <rect>
-        <x>1040</x>
-        <y>520</y>
+        <x>1050</x>
+        <y>550</y>
         <width>131</width>
         <height>51</height>
        </rect>
@@ -205,7 +205,7 @@
       <property name="geometry">
        <rect>
         <x>1210</x>
-        <y>350</y>
+        <y>380</y>
         <width>111</width>
         <height>81</height>
        </rect>
@@ -240,8 +240,8 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Here will be your recent posts&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9.75pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt;&quot;&gt;Here will be your recent posts&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QListView" name="textEdit">
@@ -263,71 +263,69 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </attribute>
      <attribute name="title">
       <string>Guide</string>
-      
      </attribute>
      <layout class="QVBoxLayout" name="verticalLayout">
-  <item>
-   <widget class="QLabel" name="label555">
-    <property name="text">
-     <string>Привет, дорогой пользователь!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_2555">
-    <property name="text">
-     <string>Эта страница - ваш путеводитель по работе с нашим сервисом.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_3555">
-    <property name="text">
-     <string>В разделе "Generate" вы можете легко создать пост для своего Telegram канала.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_4555">
-    <property name="text">
-     <string>Затем вы можете отредактировать его в CMS, используя удобный интерфейс.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_5555">
-    <property name="text">
-     <string>Нажмите "Done", чтобы отправить пост в ваш Telegram канал. </string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
-  <item>
-   <widget class="QLabel" name="label_6555">
-    <property name="text">
-     <string>Не забудьте добавить бота в свой канал и дать ему доступ к публикации.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </item>
- </layout>
-
+      <item>
+       <widget class="QLabel" name="label555">
+        <property name="text">
+         <string>Привет, дорогой пользователь!</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2555">
+        <property name="text">
+         <string>Эта страница - ваш путеводитель по работе с нашим сервисом.</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3555">
+        <property name="text">
+         <string>В разделе &quot;Generate&quot; вы можете легко создать пост для своего Telegram канала.</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4555">
+        <property name="text">
+         <string>Затем вы можете отредактировать его в CMS, используя удобный интерфейс.</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5555">
+        <property name="text">
+         <string>Нажмите &quot;Done&quot;, чтобы отправить пост в ваш Telegram канал. </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_6555">
+        <property name="text">
+         <string>Не забудьте добавить бота в свой канал и дать ему доступ к публикации.</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>

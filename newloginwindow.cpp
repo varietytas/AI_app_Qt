@@ -3,6 +3,8 @@
 #include "mainwindow.h"
 #include "database.h"
 #include <QCryptographicHash>
+#include <QMainWindow>
+
 NewLoginWindow::NewLoginWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::NewLoginWindow)
 {
