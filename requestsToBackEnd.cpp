@@ -34,6 +34,7 @@ QString AuthUser::get_post_text(const QString& request) {
     json_obj["question"] = request;
 
     QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/yandexgpt", "POST");
+
     QString text = response_json["message"].toString();
 
     return text;
@@ -57,6 +58,7 @@ bool AuthUser::checkIfUserExists(){
 
 
 QJsonObject AuthUser::send_request(const QJsonObject& json_obj, const QString& url, const QString& method) {
+
     QUrl url1 = QUrl(url);
     QNetworkRequest request(url1);
     request.setHeader(QNetworkRequest::ContentTypeHeader,"application/json");
@@ -92,5 +94,53 @@ QJsonObject AuthUser::send_request(const QJsonObject& json_obj, const QString& u
     return response_json;
 }
 
+
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+int cnt = 0;
+QString AuthUser::make_strapi_post(const QString& request) {
+    QJsonObject textObj;
+    textObj["type"] = "paragraph";
+    
+    QJsonObject textChildrenObj;
+    textChildrenObj["type"] = "text";
+    textChildrenObj["text"] = request;
+    
+    QJsonArray childrenArray;
+    childrenArray.append(textChildrenObj);
+    
+    QJsonObject paragraphObj;
+    paragraphObj["type"] = "paragraph";
+    paragraphObj["children"] = childrenArray;
+    
+    QJsonArray textArray;
+    textArray.append(paragraphObj);
+    
+    QJsonObject dataObj;
+    dataObj["text"] = textArray;
+    dataObj["name"] = "Новый пост " + QString::number(cnt++);
+    
+    QJsonObject mainObj;
+    mainObj["data"] = dataObj;
+
+    QJsonDocument doc(mainObj);
+    QByteArray jsonData = doc.toJson();
+    qDebug() << "send_request: ";
+    QJsonObject response_json = send_request(mainObj, "http://localhost:1337/api/blogs", "POST");
+    QString text = "Done";
+
+    return text;
+}
+
+QJsonArray AuthUser::get_strapi_posts() {
+    QJsonObject mainObj;
+    QJsonObject response_json = send_request(mainObj, "http://127.0.0.1:8080/strapi", "GET");
+    QJsonArray lst = response_json["message"].toArray();
+    return lst;
+}
 
 

@@ -23,8 +23,14 @@ public:
     QString get_code(QString tg_id);
     QString get_post_text(const QString& request);
     bool checkIfUserExists();
+
+    QString make_strapi_post(const QString& request);
+    QJsonArray get_strapi_posts();
+  
 private:
     QString apiUrl= "http://127.0.0.1:5000";
     QJsonObject send_request(const QJsonObject& json_obj, const QString& url, const QString& method);
+
+    
 };
 #endif
