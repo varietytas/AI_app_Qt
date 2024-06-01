@@ -28,6 +28,7 @@ QString AuthUser::get_post_text(const QString& request) {
 }
 
 QJsonObject AuthUser::send_request(const QJsonObject& json_obj, const QString& url, const QString& method) {
+
     QUrl url1 = QUrl(url);
     QNetworkRequest request(url1);
     request.setHeader(QNetworkRequest::ContentTypeHeader,"application/json");
@@ -103,3 +104,13 @@ QString AuthUser::make_strapi_post(const QString& request) {
 
     return text;
 }
+
+QString AuthUser::get_strapi_posts() {
+
+    QJsonObject mainObj;
+    QJsonObject response_json = send_request(mainObj, "http://127.0.0.1:8080/strapi", "GET");
+    QString text = "Done";
+    return text;
+}
+
+

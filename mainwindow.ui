@@ -320,7 +320,7 @@
        <normalon>../../../../../../Downloads/artificial-intelligence_11068885.png</normalon>
       </iconset>
      </attribute>
-     <attribute name="title">
+     <!-- <attribute name="title">
       <string>Coin</string>
      </attribute>
      <widget class="QPushButton" name="pushB1111utton_generate">
@@ -363,7 +363,7 @@
       <iconset>
        <normalon>../../../../../../Downloads/clock_448900.png</normalon>
       </iconset>
-     </attribute>
+     </attribute> -->
      <attribute name="title">
       <string>History</string>
      </attribute>

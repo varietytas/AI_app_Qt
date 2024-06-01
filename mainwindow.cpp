@@ -10,7 +10,10 @@
 #include <iostream>
 #include <QMessageBox>
 #include "requestsToBackend.h"
-
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QStringList>
 
 QStringList mainGuidlist = {
     "Шаг 1: Добавьте нашего бота в ваш канал: [@ai_app_1_bot](https://t.me/ai_app_1_bot).",
@@ -25,7 +28,20 @@ QStringList mainGuidlist = {
 };
 int lenMainGuidlist = mainGuidlist.size();
 int currentGuid = 0;
-
+void processJsonResponse(const QJsonArray &jsonArray, QStringList &postsList, QStringList &titlesList) {
+        qDebug() <<jsonArray.empty();
+    for (const QJsonValue &value : jsonArray) {
+        qDebug() << "processJsonResponse: ";
+        QJsonArray innerArray = value.toArray();
+        if (innerArray.size() == 2) {
+            QString post = innerArray.at(0).toString();
+            QString title = innerArray.at(1).toString();
+            qDebug() << "title: " << title;
+            postsList.append(post);
+            titlesList.append(title);
+        }
+    }
+}
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -43,12 +59,17 @@ MainWindow::MainWindow(QWidget* parent)
     //QMessageBox dialog;
     //dialog.setText(jsonString);
     //dialog.exec();
+     QJsonObject mainObj;
+    QJsonObject response_json = user.send_request(mainObj, "http://127.0.0.1:8080/strapi", "GET");
+    QJsonArray lst = response_json["message"].toArray();
+    QStringList postsList;
     QStringList list;
+
+
+    processJsonResponse(lst, postsList, list);
+
+    // QStringList list;
     model=new QStringListModel;
-     
-    list<<"Matan";
-    list<<"Parrot";
-    list<<"Dog";
     model->setStringList(list);
     ui->textEdit->setModel(model);
     
@@ -67,8 +88,23 @@ void MainWindow::replyMessage(QNetworkReply * reply)
 }
 void MainWindow::on_textEdit_clicked(const QModelIndex &index)
 {
+    AuthUser user(QString("email"),QString("login"),QString("password"));
+    QJsonObject token = user.get_token();
+    QJsonDocument doc(token);
+    QString jsonString = QString::fromUtf8(doc.toJson());
+    //QMessageBox dialog;
+    //dialog.setText(jsonString);
+    //dialog.exec();
+     QJsonObject mainObj;
+    QJsonObject response_json = user.send_request(mainObj, "http://127.0.0.1:8080/strapi", "GET");
+    QJsonArray lst = response_json["message"].toArray();
+    QStringList postsList;
+    QStringList list;
+
+
+    processJsonResponse(lst, postsList, list);
     QList<QString> newList = {"<h3>Let {xn} be a sequence of real numbers. A number L is the limit of the sequence {xn}, if the numbers in</h3><p>the sequence beco<del>me closer and closer to L — and not to any other number.</del></p><p><del>Formal definition:</del></p><blockquote>For any ε > 0<a href=\"http://youtube\"> ther</a>e exists a natural number N such that, for every natural number n > N,</blockquote><code>we have |xn − L| < ε.</code><p>The<b> sequence {xn} is said to converge to or tend to the limit L, written</b></p><h1>In symbols: ∀ε > 0 ∃N ∈ N ∀n > N : |xn − L| < ε</h1><p></p><p></p><ul><li>ewer</li></ul><ol><li>req</li></ol><h6>jk</h6>",  "Мой попугай сегодня выучил новое слово и теперь повторяет его без устали! Этот маленький разговорчивец стал настоящим центром внимания в нашем доме. Его яркие перья и веселое поведение всегда вызывают улыбку на лицах всех членов семьи.", "<div> <h2>Пост о собаке:</h2><p>Сегодня я решил попробовать новую добавку для своей собаки. Она содержит все необходимые витамины и минералы для здоровья моего питомца. Надеюсь, что это поможет ему чувствовать себя еще лучше и быть более активным!</p></div>"};
-    ui->tableView->setHtml(newList[index.row()]);
+    ui->tableView->setHtml(postsList[index.row()]);
 }
 MainWindow::~MainWindow()
 {
@@ -104,13 +140,17 @@ void MainWindow::on_pushButton_Reset_clicked()
 
 void MainWindow::on_pushButton_CMS_clicked()
 {
+    QString text = ui->textedit_subject->toPlainText();
+    AuthUser user(QString("email"),QString("login"),QString("password"));
+    QString answerPost = user.get_post_text(text);
+    user.make_strapi_post(answerPost);
     QDesktopServices::openUrl(QUrl("http://localhost:1337/admin/content-manager/collection-types/api::blog.blog?page=1&pageSize=10&sort=name:ASC"));
-}
+    }
 
 QString get_respones_from_yandex_gpt(QString &text){
     AuthUser user(QString("email"),QString("login"),QString("password"));
     QString answerPost = user.get_post_text(text);
-    user.make_strapi_post(answerPost);
+    // user.make_strapi_post(answerPost);
     return answerPost;
 }
 
@@ -139,19 +179,19 @@ void MainWindow::on_pushButton_generate_clicked()
 //     if (currentGuid == lenMainGuidlist) currentGuid = lenMainGuidlist-1;
 // }
 
-QString yourCoin ="100";
-QString yourCur =" руб";
-int yourMoney = 0;
-void MainWindow::on_pushB1111utton_generate_clicked(){
-    yourMoney += rand() % 1000;
-    QString moneyYourStr = QString::number(yourMoney);
-    if (yourMoney >= 10000){
-        yourCur =" $";
-        yourMoney = 0;
-        scw.show();
-    }
+// QString yourCoin ="100";
+// QString yourCur =" руб";
+// int yourMoney = 0;
+// void MainWindow::on_pushB1111utton_generate_clicked(){
+//     yourMoney += rand() % 1000;
+//     QString moneyYourStr = QString::number(yourMoney);
+//     if (yourMoney >= 10000){
+//         yourCur =" $";
+//         yourMoney = 0;
+//         scw.show();
+//     }
         
-    // std::string stryourCoin1 = "43";
-    // QString text = stryourCoin1;
-    ui->textbox_response_2->setText(moneyYourStr +yourCur); 
-}
+//     // std::string stryourCoin1 = "43";
+//     // QString text = stryourCoin1;
+//     ui->textbox_response_2->setText(moneyYourStr +yourCur); 
+// }
