@@ -11,8 +11,6 @@
 #include <QMessageBox>
 #include "requestsToBackend.h"
 
-<<<<<<< HEAD
-=======
 
 QStringList mainGuidlist = {
     "Шаг 1: Добавьте нашего бота в ваш канал: [@ai_app_1_bot](https://t.me/ai_app_1_bot).",
@@ -28,7 +26,6 @@ QStringList mainGuidlist = {
 int lenMainGuidlist = mainGuidlist.size();
 int currentGuid = 0;
 
->>>>>>> a12d029292973d779f48dea014be0144b2933749
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -43,18 +40,9 @@ MainWindow::MainWindow(QWidget* parent)
     QJsonObject token = user.get_token();
     QJsonDocument doc(token);
     QString jsonString = QString::fromUtf8(doc.toJson());
-<<<<<<< HEAD
     //QMessageBox dialog;
     //dialog.setText(jsonString);
     //dialog.exec();
-=======
-    QString answerPost = user.get_post_text("Напиши пост про породу корги для моего тг канала");
-
-
-    QMessageBox dialog;
-    dialog.setText(answerPost);
-    dialog.exec();
->>>>>>> a12d029292973d779f48dea014be0144b2933749
     QStringList list;
     model=new QStringListModel;
      
@@ -132,25 +120,23 @@ void MainWindow::on_pushButton_generate_clicked()
 
     ui->textbox_response->setText(text); 
 }
-<<<<<<< HEAD
-=======
-void MainWindow::on_pushButton_prev_clicked()
-{
-    currentGuid = (currentGuid-1)%lenMainGuidlist;
-    if (currentGuid < 0) currentGuid = 0; 
+// void MainWindow::on_pushButton_prev_clicked()
+// {
+//     currentGuid = (currentGuid-1)%lenMainGuidlist;
+//     if (currentGuid < 0) currentGuid = 0; 
 
-    QString text = mainGuidlist[currentGuid];
-    ui->textbox_guid->setHtml(text); 
+//     QString text = mainGuidlist[currentGuid];
+//     ui->textbox_guid->setHtml(text); 
 
-}
-void MainWindow::on_pushButton_next_clicked()
-{
+// }
+// void MainWindow::on_pushButton_next_clicked()
+// {
     
-    QString text = mainGuidlist[currentGuid];
-    ui->textbox_guid->setHtml(text); 
-    currentGuid ++;
-    if (currentGuid == lenMainGuidlist) currentGuid = lenMainGuidlist-1;
-}
+//     QString text = mainGuidlist[currentGuid];
+//     ui->textbox_guid->setHtml(text); 
+//     currentGuid ++;
+//     if (currentGuid == lenMainGuidlist) currentGuid = lenMainGuidlist-1;
+// }
 
 QString yourCoin ="100";
 QString yourCur =" руб";
@@ -168,4 +154,3 @@ void MainWindow::on_pushB1111utton_generate_clicked(){
     // QString text = stryourCoin1;
     ui->textbox_response_2->setText(moneyYourStr +yourCur); 
 }
->>>>>>> a12d029292973d779f48dea014be0144b2933749
