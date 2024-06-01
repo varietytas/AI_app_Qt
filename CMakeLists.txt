@@ -9,55 +9,39 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(BOOST_ENABLE_CMAKE ON)
 
 include(FetchContent)
-
-# # Set the path to the Boost lib (just in case)
-# set(BOOST_ROOT "C:/Program Files (x86)/boost_1_85_0")
-
-# # Find the Boost libraries
-# find_package(Boost 1.85.0 REQUIRED)
-
 set(FETCHCONTENT_QUIET FALSE) # Print downloading progress
-# Download and extract boost lib from GitHub
-FetchContent_Declare(
-    Boost
-    URL https://github.com/boostorg/boost/releases/download/boost-1.85.0/boost-1.85.0-cmake.7z
-    USES_TERMINAL_DOWNLOAD TRUE 
-    GIT_PROGRESS TRUE   
-    DOWNLOAD_NO_EXTRACT FALSE
-)
-
-# Set the path to the Boost lib (just in case)
-set(BOOST_ROOT "${CMAKE_SOURCE_DIR}/build/_deps/boost-src")
 
 # Dowload and extract sqlite3
 FetchContent_Declare(
     sqlite3
     URL https://www.sqlite.org/2024/sqlite-amalgamation-3450300.zip
 )
+FetchContent_MakeAvailable(sqlite3)
 
 # Set the path to the SQLite amalgamation directory
 set(SQLITE "${CMAKE_SOURCE_DIR}/build/_deps/sqlite3-src")
 
 # Include the SQLite amalgamation directly into the project
-add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c) 
+add_library(sqlite3 STATIC ${SQLITE}/sqlite3.c)
 
 # Add include directories for SQLite
 target_include_directories(sqlite3 PUBLIC ${SQLITE})
 
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS 
+                                                Widgets
+                                                LinguistTools # Not required
+                                                Core
+                                                Network
+                                                Test)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
+                                                Widgets
+                                                LinguistTools # Not required
+                                                Core
+                                                Network
+                                                Test)
 
 set(TS_FILES ai-qt-app_en_GB.ts)
 
@@ -74,7 +58,13 @@ set(PROJECT_SOURCES
         resetwarningwindow.ui
         newloginwindow.cpp
         newloginwindow.h
+        newloginwindow.ui
+        requestsToBackEnd.cpp
+        requestsToBackend.h
         database.h
+        "tests/tests.cpp"
+        "tests/tests.hpp"
+
         ${TS_FILES}
 )
 
@@ -82,9 +72,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ai-qt-app
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        sendconfirmwindow.h sendconfirmwindow.cpp sendconfirmwindow.ui
-        resetwarningwindow.h resetwarningwindow.cpp resetwarningwindow.ui
-        newloginwindow.h newloginwindow.cpp newloginwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ai-qt-app APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -108,26 +95,11 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-# set (BOOST_ROOT "C:/Program Files (x86)/boost_1_85_0") # Путь к библиотеке Boost
-# find_package(Boost REQUIRED)
-# include_directories(SYSTEM ${Boost_INCLUDE_DIR})
-
 target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
-                                        ${Boost_FILESYSTEM_LIBRARY}
-                                        sqlite3) #тууууут что-то
-
-# target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
-
-# Find the Boost libraries
-#find_package(Boost REQUIRED COMPONENTS system program_options)
-#
-#include_directories(${Boost_INCLUDE_DIRS})
-#link_directories(${Boost_LIBRARY_DIRS})
-#target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${Boost_LIBRARIES})
-# Если библиотека найдена, то
-#target_include_directories (SYSTEM ${Boost_INCLUDE_DIR}) # подключаем заголовочные файлы
-#
-#target_link_libraries(ai-qt-app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ai-qt-app ${Boost_LIBRARIES})
+                                        Qt${QT_VERSION_MAJOR}::Network
+                                        Qt${QT_VERSION_MAJOR}::Core
+                                        Qt${QT_VERSION_MAJOR}::Test
+                                        sqlite3)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

@@ -2,6 +2,7 @@ build
 cmake-build-debug
 .vscode
 .clang-format
+.idea
 
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------

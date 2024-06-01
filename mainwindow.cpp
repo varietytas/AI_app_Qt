@@ -7,14 +7,27 @@
 #include <QCoreApplication>
 #include <QUrl>
 #include <QDesktopServices>
-
+#include <iostream>
+#include <QMessageBox>
+#include "requestsToBackend.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QNetworkAccessManager *network =  new QNetworkAccessManager(this);
+    QObject::connect(network, &QNetworkAccessManager::finished, this, &MainWindow::replyMessage);
+    network -> get(QNetworkRequest(QUrl("https://qna.habr.com")));
 
+
+    AuthUser user(QString("email"),QString("login"),QString("password"));
+    QJsonObject token = user.get_token();
+    QJsonDocument doc(token);
+    QString jsonString = QString::fromUtf8(doc.toJson());
+    //QMessageBox dialog;
+    //dialog.setText(jsonString);
+    //dialog.exec();
     QStringList list;
     model=new QStringListModel;
      
@@ -27,6 +40,15 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->pushButton_generate, &QPushButton::clicked, this, &MainWindow::on_pushButton_generate_clicked);
 
     
+}
+
+void MainWindow::replyMessage(QNetworkReply * reply)
+{
+//    std::cout << reply->readAll().toStdString();
+//    qDebug() << reply->readAll();
+    // QMessageBox dialog;
+    // dialog.setText(reply->readAll());
+    // dialog.exec();
 }
 void MainWindow::on_textEdit_clicked(const QModelIndex &index)
 {
@@ -83,7 +105,4 @@ void MainWindow::on_pushButton_generate_clicked()
     // QString text = get_respones_from_yandex_gpt(text); // Вызываем функцию get_new() с полученным текстом
 
     ui->textbox_response->setText(text); 
-
 }
-
-
