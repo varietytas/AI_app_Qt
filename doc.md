@@ -18,9 +18,7 @@
 Нажмите кнопку \"Edit\", зарегистрируйтесь в Strapi (если еще не сделали этого), войдите в проект \"Blogs\" и отформатируйте, отредактируйте пост. Сохраните изменения и опубликуйте пост в Strapi.
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
     <img src="assets/шаг5.jpg" alt="Screenshot 4" width="720" style="margin: 20px;">
-</div>
-<div style="display: flex; justify-content: center; flex-wrap: wrap;">
-    <img src="assets/regzapoln.jpg" alt="Screenshot 4" width="720" style="margin: 20px;">
+    <img src="assets/regzapoln.jpg" alt="Screenshot 4" width="300" style="margin: 20px;">
 </div>
 
 ## Шаг 6
