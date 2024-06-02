@@ -71,6 +71,8 @@ set(PROJECT_SOURCES
         newloginwindow.h
         requestsToBackEnd.cpp
         requestsToBackend.h
+        log.h
+        log.cpp
         database.h
         ${TS_FILES}
 )
