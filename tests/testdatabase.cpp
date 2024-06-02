@@ -10,13 +10,12 @@ void TestDatabase::cleanupTestCase() { delete db; }
 void TestDatabase::testAddText()
 {
     db->addText("John", "john@example.com", "chanel1", "token123");
-    std::vector<UserInfo> texts = db->getAllTexts();
+    UserInfo user = db->getAllTexts();
 
-    QCOMPARE(texts.size(), 1);
-    QCOMPARE(texts[0].firstname, std::string("John"));
-    QCOMPARE(texts[0].email, std::string("john@example.com"));
-    QCOMPARE(texts[0].chanelid, std::string("chanel1"));
-    QCOMPARE(texts[0].token, std::string("token123"));
+    QCOMPARE(user.firstname, std::string("John"));
+    QCOMPARE(user.email, std::string("john@example.com"));
+    QCOMPARE(user.chanelid, std::string("chanel1"));
+    QCOMPARE(user.token, std::string("token123"));
 }
 
 void TestDatabase::testGetUserByEmailAndPassword()
