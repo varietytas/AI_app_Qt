@@ -264,23 +264,23 @@ void MainWindow::on_pushButton_generate_clicked()
         ui->textbox_response->setText(response);
     }
 }
-// void MainWindow::on_pushButton_prev_clicked()
-// {
-//     currentGuid = (currentGuid-1)%lenMainGuidlist;
-//     if (currentGuid < 0) currentGuid = 0;
+void MainWindow::on_pushButton_prev_clicked()
+{
+    currentGuid = (currentGuid-1)%lenMainGuidlist;
+    if (currentGuid < 0) currentGuid = 0;
 
-//     QString text = mainGuidlist[currentGuid];
-//     ui->textbox_guid->setHtml(text);
+    QString text = mainGuidlist[currentGuid];
+    ui->textbox_guid->setHtml(text);
 
-// }
-// void MainWindow::on_pushButton_next_clicked()
-// {
+}
+void MainWindow::on_pushButton_next_clicked()
+{
 
-//     QString text = mainGuidlist[currentGuid];
-//     ui->textbox_guid->setHtml(text);
-//     currentGuid ++;
-//     if (currentGuid == lenMainGuidlist) currentGuid = lenMainGuidlist-1;
-// }
+    QString text = mainGuidlist[currentGuid];
+    ui->textbox_guid->setHtml(text);
+    currentGuid ++;
+    if (currentGuid == lenMainGuidlist) currentGuid = lenMainGuidlist-1;
+}
 
 // QString yourCoin ="100";
 // QString yourCur =" руб";
