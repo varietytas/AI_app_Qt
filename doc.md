@@ -29,13 +29,13 @@
 ## Шаг 7
 Посмотреть историю ваших постов можно в Strapi или на специальной странице \"History\".
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-    <img src="assets/шаг7.jpg" alt="Screenshot 4" width="720" style="margin: 20px;">
+    <img src="assets/шаг7.png" alt="Screenshot 4" width="720" style="margin: 20px;">
 </div>
 
 ## Шаг 8
 Нажмите на название поста справа, и слева отобразится предыдущий пост.
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-    <img src="assets/шаг8.jpg" alt="Screenshot 4" width="720" style="margin: 20px;">
+    <img src="assets/шаг8.png" alt="Screenshot 4" width="720" style="margin: 20px;">
 </div>
 
 ## Готово! Наслаждайтесь созданием контента с помощью AI APP!
