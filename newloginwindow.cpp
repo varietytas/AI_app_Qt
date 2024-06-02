@@ -17,34 +17,11 @@ NewLoginWindow::~NewLoginWindow()
     delete ui;
 }
 
-QString hashPassword(const QString &password)
-{
-    QByteArray hash = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
-    return hash.toHex();
-}
 
 void NewLoginWindow::on_pushButtonLogin_clicked()
 {
     QString email = ui->lineEditEmail->text();
     QString password = ui->lineEditPassword->text();
-    try
-    {
-        Database db;
-        db.createTables();
-    }
-    catch (const std::exception &e)
-    {
-        std::cout << "Caught exception in Making DB: " << e.what() << std::endl;
-    }
-
-    std::string email1 = email.toStdString();
-    std::string hashedPassword = hashPassword(password).toStdString();
-    qDebug() << "Email: " << email;
-    std::cout << "Password: " << hashedPassword;
-    //    if (db.getUserByEmailAndPassword(email1, hashedPassword))
-    //    {
-    //        setCentralWidget(new MainWindow(this));
-    //    }
     AuthUser user(email, password, password);
     bool exists = user.checkIfUserExists();
     if (exists)
@@ -63,11 +40,6 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
     QString email = ui->lineEditemailreg->text();
     QString password = ui->lineEditPassword_1->text();
     QString channel = ui->lineEditchannel->text();
-
-    // qDebug() << "Email: " << email;
-    // qDebug() << "Password: " << password;
-    // qDebug() << "channel: " << channel;
-    // qDebug() << "name: " << name;
     Database db;
     try
     {
@@ -78,13 +50,12 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
         std::cout << "Caught exception in Making DB: " << e.what() << std::endl;
     }
     std::string email1 = email.toStdString();
-    std::string hashedPassword = hashPassword(password).toStdString();
-    // qDebug() << "Password: " << hashedPassword;
+    std::string password1 = password.toStdString();
     std::string channel1 = channel.toStdString();
     std::string name1 = name.toStdString();
     try
     {
-        db.addText(name1, email1, channel1, hashedPassword);
+        db.addText(name1, email1, channel1, password1);
     }
     catch (const std::exception &e)
     {

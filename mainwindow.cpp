@@ -10,6 +10,7 @@
 #include <iostream>
 #include <QMessageBox>
 #include "requestsToBackend.h"
+#include "database.h"
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
@@ -43,7 +44,13 @@ void processJsonResponse(const QJsonArray &jsonArray, QStringList &postsList, QS
 }
 void MainWindow::newHistory()
 {
-    AuthUser user(QString("email"), QString("login"), QString("password"));
+    Database db;
+    db.createTables();
+    UserInfo newUser = db.getAllTexts();
+    QString email = QString::fromStdString(newUser.email);
+    QString password = QString::fromStdString(newUser.token);
+    AuthUser user(email, password,password);
+    qDebug() << "New user" << email;
     QJsonArray lst;
     try
     {
@@ -67,8 +74,12 @@ MainWindow::MainWindow(QWidget *parent)
     // QNetworkAccessManager *network =  new QNetworkAccessManager(this);
     // QObject::connect(network, &QNetworkAccessManager::finished, this, &MainWindow::replyMessage);
     // network -> get(QNetworkRequest(QUrl("https://qna.habr.com")));
-
-    AuthUser user(QString("email"), QString("login"), QString("password"));
+Database db;
+    db.createTables();
+    UserInfo newUser = db.getAllTexts();
+    QString email = QString::fromStdString(newUser.email);
+    QString password = QString::fromStdString(newUser.token);
+    AuthUser user(email, password,password);
 
     QJsonObject token = user.get_token();
     QJsonDocument doc(token);
@@ -94,7 +105,12 @@ void MainWindow::replyMessage(QNetworkReply *reply)
 }
 void MainWindow::on_textEdit_clicked(const QModelIndex &index)
 {
-    AuthUser user(QString("email"), QString("login"), QString("password"));
+    Database db;
+    db.createTables();
+    UserInfo newUser = db.getAllTexts();
+    QString email = QString::fromStdString(newUser.email);
+    QString password = QString::fromStdString(newUser.token);
+    AuthUser user(email, password,password);
     QJsonObject token = user.get_token();
     QJsonDocument doc(token);
     QString jsonString = QString::fromUtf8(doc.toJson());
@@ -154,7 +170,12 @@ void MainWindow::on_pushButton_Done_clicked()
     {
         std::cout << "Caught exception in Making New History: " << e.what() << std::endl;
     }
-    AuthUser user(QString("email"), QString("login"), QString("password"));
+    Database db;
+    db.createTables();
+    UserInfo newUser = db.getAllTexts();
+    QString email = QString::fromStdString(newUser.email);
+    QString password = QString::fromStdString(newUser.token);
+    AuthUser user(email, password,password);
     QJsonArray lst;
     try
     {
@@ -189,7 +210,12 @@ void MainWindow::on_pushButton_CMS_clicked()
 {
 
     QString text = ui->textbox_response->toPlainText();
-    AuthUser user(QString("email"), QString("login"), QString("password"));
+    Database db;
+    db.createTables();
+    UserInfo newUser = db.getAllTexts();
+    QString email = QString::fromStdString(newUser.email);
+    QString password = QString::fromStdString(newUser.token);
+    AuthUser user(email, password,password);
     // QString answerPost = user.get_post_text(text);
     try
     {
@@ -213,7 +239,12 @@ void MainWindow::on_pushButton_CMS_clicked()
 
 QString get_respones_from_yandex_gpt(QString &text)
 {
-    AuthUser user(QString("email"), QString("login"), QString("password"));
+    Database db;
+    db.createTables();
+    UserInfo newUser = db.getAllTexts();
+    QString email = QString::fromStdString(newUser.email);
+    QString password = QString::fromStdString(newUser.token);
+    AuthUser user(email, password,password);
     QString answerPost;
     try
     {

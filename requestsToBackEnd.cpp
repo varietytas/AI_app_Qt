@@ -1,6 +1,8 @@
 #include "requestsToBackend.h"
 #include <QNetworkAccessManager>
 #include <string>
+#include <iostream>
+
 #include <QString>
 std::string QStringToStdString(const QString &qStr)
 {
@@ -51,7 +53,8 @@ bool AuthUser::checkIfUserExists()
     QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/check_email", "POST");
     QString response_message = response_json["message"].toString();
     std::string message = QStringToStdString(response_message);
-    if (message == "Yes")
+    std::cout <<"message -> "<< message << std::endl;
+    if (message == "YES")
     {
         return true;
     }
