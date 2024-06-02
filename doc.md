@@ -3,6 +3,7 @@
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
     <img src="assets/addbot.png" alt="Screenshot 4" width="350" style="margin: 20px;">
 </div>
+
 ## Шаг 2
 Отправьте сообщение боту [@LeadConverterToolkitBot](https://t.me/LeadConverterToolkitBot) и укажите ваш channel id (ID вашего Telegram-канала).
 ## Шаг 3
