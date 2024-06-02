@@ -10,7 +10,7 @@
 #include <iostream>
 #include <QMessageBox>
 #include "requestsToBackend.h"
-
+#include <QNetworkAccessManager>
 
 QStringList mainGuidlist = {
     "Шаг 1: Добавьте нашего бота в ваш канал: [@ai_app_1_bot](https://t.me/ai_app_1_bot).",
