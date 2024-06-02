@@ -11,7 +11,7 @@
 ## Шаг 4
 Используйте кнопки \"Reset\" для очистки текста или \"Generate\" для перегенерации нового варианта.
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-    <img src="assets/шаг4.jpg" alt="Screenshot 4" width="350" style="margin: 20px;">
+    <img src="assets/шаг4.jpg" alt="Screenshot 4" width="500" style="margin: 20px;">
 </div>
 
 ## Шаг 5
