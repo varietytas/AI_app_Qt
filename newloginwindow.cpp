@@ -7,6 +7,8 @@
 #include <QMainWindow>
 #include "sendconfirmwindow.h"
 #include "resetwarningwindow.h"
+#include <QMessageBox>
+
 NewLoginWindow::NewLoginWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::NewLoginWindow)
 {
@@ -17,7 +19,6 @@ NewLoginWindow::~NewLoginWindow()
 {
     delete ui;
 }
-
 
 void NewLoginWindow::on_pushButtonLogin_clicked()
 {
@@ -32,7 +33,6 @@ void NewLoginWindow::on_pushButtonLogin_clicked()
     else
     {
         rww.show();
-        qDebug() << "User does not exist";
     }
 }
 
@@ -42,31 +42,38 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
     QString email = ui->lineEditemailreg->text();
     QString password = ui->lineEditPassword_1->text();
     QString channel = ui->lineEditchannel->text();
-    Database db;
-    try
+    if (name.isEmpty() || email.isEmpty() || password.isEmpty() || channel.isEmpty())
     {
-        db.createTables();
+        QMessageBox::warning(this, "Поля не заполнены", "Пожалуйста, заполните все поля.");
     }
-    catch (const std::exception &e)
+    else
     {
-        std::cout << "Caught exception in Making DB: " << e.what() << std::endl;
-    }
-    std::string email1 = email.toStdString();
-    std::string password1 = password.toStdString();
-    std::string channel1 = channel.toStdString();
-    std::string name1 = name.toStdString();
-    try
-    {
-        db.addText(name1, email1, channel1, password1);
-    }
-    catch (const std::exception &e)
-    {
-        std::cout << "Caught exception in DB b/c of making new user: " << e.what() << std::endl;
-    }
+        Database db;
+        try
+        {
+            db.createTables();
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << "Caught exception in Making DB: " << e.what() << std::endl;
+        }
+        std::string email1 = email.toStdString();
+        std::string password1 = password.toStdString();
+        std::string channel1 = channel.toStdString();
+        std::string name1 = name.toStdString();
+        try
+        {
+            db.addText(name1, email1, channel1, password1);
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << "Caught exception in DB b/c of making new user: " << e.what() << std::endl;
+        }
 
-    AuthUser newUser = *new AuthUser(email, password, name);
-    //    newUser.sendPost(email);
-    QString answer = newUser.get_code(channel);
-    // ответ либо ALREADY REGISTERED, что означает, что пользователь уже был зареган, или REGISTERED, значит, что все ок
-    setCentralWidget(new MainWindow(this));
+        AuthUser newUser = *new AuthUser(email, password, name);
+        //    newUser.sendPost(email);
+        QString answer = newUser.get_code(channel);
+        // ответ либо ALREADY REGISTERED, что означает, что пользователь уже был зареган, или REGISTERED, значит, что все ок
+        setCentralWidget(new MainWindow(this));
+    }
 }
