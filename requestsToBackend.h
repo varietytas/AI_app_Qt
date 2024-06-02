@@ -29,7 +29,7 @@ public:
     QJsonObject get_token();
   
 private:
-    QString apiUrl= "http://127.0.0.1:8000";
+    QString apiUrl= "http://62.113.113.54:8000";
     QJsonObject send_request(const QJsonObject& json_obj, const QString& url, const QString& method);
 
     
