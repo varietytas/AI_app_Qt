@@ -22,7 +22,6 @@ QString AuthUser::get_code(QString tg_id)
     QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/email", "POST");
     QString message = response_json["message"].toString();
     return message;
-    //    return response_json;
 }
 void AuthUser::sendPost(QString message)
 {
@@ -53,7 +52,6 @@ bool AuthUser::checkIfUserExists()
     QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/check_email", "POST");
     QString response_message = response_json["message"].toString();
     std::string message = QStringToStdString(response_message);
-    std::cout <<"message -> "<< message << std::endl;
     if (message == "YES")
     {
         return true;
@@ -138,7 +136,6 @@ QString AuthUser::make_strapi_post(const QString &request)
 
     QJsonDocument doc(mainObj);
     QByteArray jsonData = doc.toJson();
-    qDebug() << "send_request: ";
     QJsonObject response_json = send_request(mainObj, "http://localhost:1337/api/blogs", "POST");
     QString text = "Done";
 
