@@ -44,7 +44,15 @@ void processJsonResponse(const QJsonArray &jsonArray, QStringList &postsList, QS
 void MainWindow::newHistory()
 {
     AuthUser user(QString("email"), QString("login"), QString("password"));
-    QJsonArray lst = user.get_strapi_posts();
+    QJsonArray lst;
+    try
+    {
+        lst = user.get_strapi_posts();
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << "Caught exception in Making getting posts from Strapi: " << e.what() << std::endl;
+    }
     QStringList postsList;
     QStringList list;
     processJsonResponse(lst, postsList, list);
