@@ -75,7 +75,9 @@ void NewLoginWindow::on_pushButtonRegister_clicked()
         AuthUser newUser = *new AuthUser(email, password, name);
         //    newUser.sendPost(email);
         QString answer = newUser.get_code(channel);
+        
         // ответ либо ALREADY REGISTERED, что означает, что пользователь уже был зареган, или REGISTERED, значит, что все ок
         setCentralWidget(new MainWindow(this));
+        qDebug() << answer;
     }
 }
