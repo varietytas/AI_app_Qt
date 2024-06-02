@@ -1,7 +1,7 @@
 ## Шаг 1 
 Добавьте нашего бота в ваш канал: [@ai_app_1_bot](https://t.me/ai_app_1_bot).
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-    <img src="assets/addbot.png" alt="Screenshot 4" width="350" style="margin: 20px;">
+    <img src="assets/addbot.png" alt="Screenshot 4" width="200" style="margin: 20px;">
 </div>
 
 ## Шаг 2
