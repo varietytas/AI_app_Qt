@@ -61,6 +61,8 @@ set(PROJECT_SOURCES
         newloginwindow.ui
         requestsToBackEnd.cpp
         requestsToBackend.h
+        log.h
+        log.cpp
         database.h
         "tests/tests.cpp"
         "tests/tests.hpp"

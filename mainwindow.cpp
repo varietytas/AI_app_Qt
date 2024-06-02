@@ -10,6 +10,8 @@
 #include <iostream>
 #include <QMessageBox>
 #include "requestsToBackend.h"
+#include <QNetworkAccessManager>
+
 #include "database.h"
 #include <QJsonDocument>
 #include <QJsonArray>

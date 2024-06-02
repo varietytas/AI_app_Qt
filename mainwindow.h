@@ -6,7 +6,7 @@
 #include "resetwarningwindow.h"
 #include <QStringListModel>
 #include "requestsToBackend.h"
-
+#include <QNetworkReply>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
