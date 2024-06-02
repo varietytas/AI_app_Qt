@@ -1,5 +1,8 @@
 ## Шаг 1 
 Добавьте нашего бота в ваш канал: [@ai_app_1_bot](https://t.me/ai_app_1_bot).
+<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+    <img src="assets/addbot.png" alt="Screenshot 4" width="350" style="margin: 20px;">
+</div>
 ## Шаг 2
 Отправьте сообщение боту [@LeadConverterToolkitBot](https://t.me/LeadConverterToolkitBot) и укажите ваш channel id (ID вашего Telegram-канала).
 ## Шаг 3
@@ -15,6 +18,9 @@
 ## Шаг 8
 Нажмите на название поста справа, и слева отобразится предыдущий пост.
 ## Готово! Наслаждайтесь созданием контента с помощью AI APP!
+
+
+
 ## Site Appearance for admin
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
     <img src="assets/Снимок экрана 2024-06-02 в 20.25.25.png" alt="Screenshot 4" width="350" style="margin: 20px;">
