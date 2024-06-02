@@ -19,7 +19,7 @@ QString AuthUser::get_code(QString tg_id)
     json_obj["email"] = this->email;
     json_obj["password"] = this->password;
     json_obj["tg_id"] = tg_id;
-    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/email", "POST");
+    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:8000/email", "POST");
     QString message = response_json["message"].toString();
     return message;
 }
@@ -29,7 +29,7 @@ void AuthUser::sendPost(QString message)
     json_obj["email"] = this->email;
     json_obj["password"] = this->password;
     json_obj["message"] = message;
-    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/send_message", "POST");
+    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:8000/send_message", "POST");
 }
 QString AuthUser::get_post_text(const QString &request)
 {
@@ -37,7 +37,7 @@ QString AuthUser::get_post_text(const QString &request)
     json_obj["token"] = this->token;
     json_obj["question"] = request;
 
-    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/yandexgpt", "POST");
+    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:8000/yandexgpt", "POST");
 
     QString text = response_json["message"].toString();
 
@@ -49,7 +49,7 @@ bool AuthUser::checkIfUserExists()
     QJsonObject json_obj;
     json_obj["email"] = this->email;
     json_obj["password"] = this->password;
-    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:5000/check_email", "POST");
+    QJsonObject response_json = send_request(json_obj, "http://62.113.113.54:8000/check_email", "POST");
     QString response_message = response_json["message"].toString();
     std::string message = QStringToStdString(response_message);
     if (message == "YES")
@@ -145,7 +145,7 @@ QString AuthUser::make_strapi_post(const QString &request)
 QJsonArray AuthUser::get_strapi_posts()
 {
     QJsonObject mainObj;
-    QJsonObject response_json = send_request(mainObj, "http://127.0.0.1:8080/strapi", "GET");
+    QJsonObject response_json = send_request(mainObj, "http://62.113.113.54:8000/strapi", "GET");
     QJsonArray lst = response_json["message"].toArray();
     return lst;
 }

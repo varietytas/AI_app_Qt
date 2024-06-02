@@ -298,3 +298,5 @@ void MainWindow::on_pushButton_next_clicked()
 //     // QString text = stryourCoin1;
 //     ui->textbox_response_2->setText(moneyYourStr +yourCur);
 // }
+
+
