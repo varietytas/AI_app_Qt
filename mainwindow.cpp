@@ -130,10 +130,10 @@ void MainWindow::on_pushButton_Reset_clicked()
 void MainWindow::on_pushButton_CMS_clicked()
 {
     
-    QString text = ui->textedit_subject->toPlainText();
+    QString text = ui->textbox_response->toPlainText();
     AuthUser user(QString("email"),QString("login"),QString("password"));
-    QString answerPost = user.get_post_text(text);
-    user.make_strapi_post(answerPost);
+    // QString answerPost = user.get_post_text(text);
+    user.make_strapi_post(text);
     newHistory();
     QDesktopServices::openUrl(QUrl("http://localhost:1337/admin/content-manager/collection-types/api::blog.blog?page=1&pageSize=10&sort=name:ASC"));
     
@@ -141,16 +141,22 @@ void MainWindow::on_pushButton_CMS_clicked()
 
 QString get_respones_from_yandex_gpt(QString &text){
     AuthUser user(QString("email"),QString("login"),QString("password"));
+    
     QString answerPost = user.get_post_text(text);
     // user.make_strapi_post(answerPost);
     return answerPost;
 }
-
+QString prev;
 void MainWindow::on_pushButton_generate_clicked()
 {
+    qDebug() << "on_pushButton_generate_clicked";
     QString text = ui->textedit_subject->toPlainText();
-    QString response = get_respones_from_yandex_gpt(text); 
-    ui->textbox_response->setText(response); 
+    if (text !=prev){
+        prev = text;
+        QString response = get_respones_from_yandex_gpt(text); 
+        ui->textbox_response->setText(response); 
+    }
+    
 
 }
 // void MainWindow::on_pushButton_prev_clicked()

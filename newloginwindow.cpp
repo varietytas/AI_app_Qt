@@ -27,12 +27,13 @@ void NewLoginWindow::on_pushButtonLogin_clicked()
 {
     QString email = ui->lineEditEmail->text();
     QString password = ui->lineEditPassword->text();
-    qDebug() << "Email: " << email;
-    qDebug() << "Password: " << password;
+    
     Database db;
     db.createTables();
     std::string email1 = email.toStdString();
-    std::string hashedPassword = password.toStdString();
+    std::string hashedPassword =  hashPassword(password).toStdString();
+    qDebug() << "Email: " << email;
+    std::cout << "Password: " << hashedPassword;
 //    if (db.getUserByEmailAndPassword(email1, hashedPassword))
 //    {
 //        setCentralWidget(new MainWindow(this));
