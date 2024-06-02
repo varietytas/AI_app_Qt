@@ -20,8 +20,15 @@ private:
     QString email;
     QString password;
     QString token;
-
+    QString make_strapi_post(const QString& request);
+    QJsonArray get_strapi_posts();
+    QJsonObject get_token();
+  
+private:
+    QString apiUrl= "http://62.113.113.54:8000";
     QJsonObject send_request(const QJsonObject& json_obj, const QString& url, const QString& method);
+
+    
 };
 
 #endif // REQUESTSTOBACKEND_H
