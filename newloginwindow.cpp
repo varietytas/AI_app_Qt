@@ -8,8 +8,6 @@
 #include "sendconfirmwindow.h"
 #include "resetwarningwindow.h"
 #include <QMessageBox>
-#include <iostream>
-
 
 NewLoginWindow::NewLoginWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::NewLoginWindow)
