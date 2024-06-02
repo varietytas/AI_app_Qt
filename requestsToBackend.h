@@ -16,7 +16,6 @@ public:
     QString get_post_text(const QString& request);
     bool checkIfUserExists();
 
-private:
     QString email;
     QString password;
     QString token;
