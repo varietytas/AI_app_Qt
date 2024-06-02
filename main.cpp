@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    // conductTesting(argc, argv); // TESTS
+    conductTesting(argc, argv); // TESTS
 
     NewLoginWindow loginWindow;
     try
