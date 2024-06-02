@@ -17,7 +17,8 @@
 </div>
 
 ## Шаг 4
-На главной странице введите название вашего поста и нажмите кнопку \"Сгенерировать\".  Yandex GPT сгенерирует для вас текст.
+На главной странице введите название вашего поста и нажмите кнопку \"Generate\".  
+Yandex GPT сгенерирует для вас текст.
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
     <img src="assets/шаг4new.jpg" alt="Screenshot 4" width="720" style="margin: 20px;">
 </div>
