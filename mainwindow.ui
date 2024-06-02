@@ -88,7 +88,7 @@
      <enum>QTabWidget::TabShape::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="icon">
@@ -320,50 +320,6 @@
        <normalon>../../../../../../Downloads/artificial-intelligence_11068885.png</normalon>
       </iconset>
      </attribute>
-     <!-- <attribute name="title">
-      <string>Coin</string>
-     </attribute>
-     <widget class="QPushButton" name="pushB1111utton_generate">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>110</y>
-        <width>681</width>
-        <height>431</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>IMG_0556.heic</normaloff>
-        <normalon>IMG_0556.heic</normalon>IMG_0556.heic</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-     </widget>
-     <widget class="QTextBrowser" name="textbox_response_2">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>30</y>
-        <width>491</width>
-        <height>51</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="icon">
-      <iconset>
-       <normalon>../../../../../../Downloads/clock_448900.png</normalon>
-      </iconset>
-     </attribute> -->
      <attribute name="title">
       <string>History</string>
      </attribute>
