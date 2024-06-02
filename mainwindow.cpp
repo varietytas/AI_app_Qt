@@ -59,7 +59,7 @@ void MainWindow::newHistory()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Caught exception in Making getting posts from Strapi: " << e.what() << std::endl;
+        std::cout << "Caught exception in getting posts from Strapi: " << e.what() << std::endl;
     }
     QStringList postsList;
     QStringList list;
@@ -68,6 +68,7 @@ void MainWindow::newHistory()
     model->setStringList(list);
     ui->textEdit->setModel(model);
 }
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -92,6 +93,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
     connect(ui->pushButton_generate, &QPushButton::clicked, this, &MainWindow::on_pushButton_generate_clicked);
 }
+MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::replyMessage(QNetworkReply *reply) {}
 void MainWindow::on_textEdit_clicked(const QModelIndex &index)
@@ -130,10 +132,6 @@ void MainWindow::on_textEdit_clicked(const QModelIndex &index)
     model->setStringList(list);
     ui->textEdit->setModel(model);
     ui->tableView->setHtml(postsList[index.row()]);
-}
-MainWindow::~MainWindow()
-{
-    delete ui;
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)

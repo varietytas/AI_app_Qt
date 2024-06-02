@@ -65,8 +65,12 @@ set(PROJECT_SOURCES
         log.cpp
         abstractdb.h
         database.h
-        "tests/tests.cpp"
-        "tests/tests.hpp"
+        "tests/testdatabase.cpp"
+        "tests/testdatabase.hpp"
+        "tests/testnewloginwindow.cpp"
+        "tests/testnewloginwindow.hpp"
+        "tests/testmainwindow.cpp"
+        "tests/testmainwindow.hpp"
 
         ${TS_FILES}
 )
