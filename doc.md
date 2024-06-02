@@ -6,6 +6,10 @@
 
 ## Шаг 2
 Отправьте сообщение боту [@LeadConverterToolkitBot](https://t.me/LeadConverterToolkitBot) и укажите ваш channel id (ID вашего Telegram-канала).
+<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+    <img src="assets/id.jpg" alt="Screenshot 4" width="200" style="margin: 20px;">
+</div>
+
 ## Шаг 3
 На главной странице введите название вашего поста и нажмите кнопку \"Сгенерировать\".  Yandex GPT сгенерирует для вас текст.
 ## Шаг 4
