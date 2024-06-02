@@ -19,6 +19,9 @@
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
     <img src="assets/шаг5.jpg" alt="Screenshot 4" width="720" style="margin: 20px;">
 </div>
+<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+    <img src="assets/regzapoln.jpg" alt="Screenshot 4" width="720" style="margin: 20px;">
+</div>
 
 ## Шаг 6
 Вернитесь в приложение AI APP и нажмите кнопку \"Done\": бот отправит ваш пост в ваш канал.
