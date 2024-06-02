@@ -1,7 +1,8 @@
+#include "abstractdb.h"
 #include <sqlite3.h>
 #include <string>
 #include <vector>
-#include <iostream>
+
 
 struct UserInfo
 {
@@ -12,18 +13,15 @@ struct UserInfo
     std::string token;
 };
 
-class Database
+class Database : public AbstractDB
 {
 public:
-    Database(const std::string &path = "userdata.db")
-    {
-        exit = sqlite3_open(path.c_str(), &DB);
-    }
-    ~Database() { sqlite3_close(DB); }
+    Database(const std::string& path = "userdata.db") : AbstractDB(path) {}
+    ~Database() {}
 
-    void createTables()
+    void createTables() override
     {
-        char *messaggeError;
+        char* messaggeError;
         std::string query_text = "CREATE TABLE IF NOT EXISTS text("
                                  "ID INTEGER PRIMARY KEY  AUTOINCREMENT,"
                                  "firstname TEXT,"
@@ -56,25 +54,26 @@ public:
 
     UserInfo getAllTexts()
     {
-       char *messaggeError;
+        char* messaggeError;
 
-    std::string query = "SELECT * FROM text LIMIT 1;";
-    std::vector<UserInfo> data;
-    exit = sqlite3_exec(DB, query.c_str(), textCallback, &data, &messaggeError);
+        std::string query = "SELECT * FROM text LIMIT 1;";
+        std::vector<UserInfo> data;
+        exit = sqlite3_exec(DB, query.c_str(), textCallback, &data, &messaggeError);
 
-    if (!data.empty())
-    {
-        return data[0]; // Возвращаем первую запись из результата запроса
+        if (!data.empty())
+        {
+            return data[0]; // Возвращаем первую запись из результата запроса
+        }
+        else
+        {
+            // Возвращаем пустой объект UserInfo, если нет результатов
+            return UserInfo();
+        }
     }
-    else
+
+    bool getUserByEmailAndPassword(const std::string& email, const std::string& password)
     {
-        // Возвращаем пустой объект UserInfo, если нет результатов
-        return UserInfo();
-    }
-    }
-    bool getUserByEmailAndPassword(const std::string &email, const std::string &password)
-    {
-        char *messaggeError;
+        char* messaggeError;
         std::vector<UserInfo> data;
         std::string query = "SELECT * FROM text WHERE email = '" + email + "' AND token = '" + password + "'";
         exit = sqlite3_exec(DB, query.c_str(), textCallback, &data, &messaggeError);
@@ -82,9 +81,6 @@ public:
     }
 
 private:
-    sqlite3 *DB;
-    int exit;
-
     static int textCallback(void *data, int numOfColumns, char **row, char **columnsNames)
     {
         std::vector<UserInfo> *_data = static_cast<std::vector<UserInfo> *>(data);

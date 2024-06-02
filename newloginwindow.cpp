@@ -5,6 +5,8 @@
 #include <QCryptographicHash>
 #include "requestsToBackend.h"
 #include <QMainWindow>
+#include <iostream>
+
 
 NewLoginWindow::NewLoginWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::NewLoginWindow)

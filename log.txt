@@ -50,3 +50,25 @@
 
 2024-06-02 16:58:02 - AuthUser::send_request response JSON: 
 2024-06-02 16:58:02 - AuthUser::get_post_text response text: 
+2024-06-02 18:04:39 - AuthUser::get_code called with tg_id: 1
+2024-06-02 18:04:39 - AuthUser::send_request called with URL: http://62.113.113.54:8000/email and method: POST
+2024-06-02 18:04:39 - Request JSON: {
+    "email": "1",
+    "password": "1",
+    "tg_id": "1"
+}
+
+2024-06-02 18:04:39 - Network error: Error transferring http://62.113.113.54:8000/email - server replied: NOT FOUND
+2024-06-02 18:04:39 - AuthUser::get_code response message: 
+2024-06-02 18:04:39 - AuthUser::send_request called with URL: http://62.113.113.54:8000/login and method: POST
+2024-06-02 18:04:39 - Request JSON: {
+    "email": "1",
+    "password": "1"
+}
+
+2024-06-02 18:04:39 - Network error: Error transferring http://62.113.113.54:8000/login - server replied: NOT FOUND
+2024-06-02 18:04:39 - AuthUser::send_request called with URL: http://62.113.113.54:8000/strapi and method: GET
+2024-06-02 18:04:39 - Request JSON: {
+}
+
+2024-06-02 18:04:39 - Network error: Error transferring http://62.113.113.54:8000/strapi - server replied: NOT FOUND

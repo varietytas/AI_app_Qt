@@ -63,6 +63,7 @@ set(PROJECT_SOURCES
         requestsToBackend.h
         log.h
         log.cpp
+        abstractdb.h
         database.h
         "tests/tests.cpp"
         "tests/tests.hpp"
