@@ -154,6 +154,28 @@ void MainWindow::on_pushButton_Done_clicked()
     {
         std::cout << "Caught exception in Making New History: " << e.what() << std::endl;
     }
+    AuthUser user(QString("email"), QString("login"), QString("password"));
+    QJsonArray lst;
+    try
+    {
+        lst = user.get_strapi_posts();
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << "Caught exception in Making getting posts from Strapi: " << e.what() << std::endl;
+    }
+    QStringList postsList;
+    QStringList list;
+    try
+    {
+        processJsonResponse(lst, postsList, list);
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << "Caught exception in getting data from endpoint with all posts: " << e.what() << std::endl;
+    }
+    qDebug() << postsList[postsList.size()-1];
+    user.sendPost(postsList[postsList.size()-1]);
 }
 
 void MainWindow::on_pushButton_Reset_clicked()
