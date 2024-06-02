@@ -2,7 +2,8 @@
 #define NEWLOGINWINDOW_H
 
 #include <QMainWindow>
-
+#include "sendconfirmwindow.h"
+#include "resetwarningwindow.h"
 namespace Ui {
 class NewLoginWindow;
 }
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::NewLoginWindow *ui;
+    SendConfirmWindow scw;
+    ResetWarningWindow rww;
     
 private slots:
     void on_pushButtonLogin_clicked();

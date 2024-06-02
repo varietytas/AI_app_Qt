@@ -5,7 +5,8 @@
 #include <QCryptographicHash>
 #include "requestsToBackend.h"
 #include <QMainWindow>
-
+#include "sendconfirmwindow.h"
+#include "resetwarningwindow.h"
 NewLoginWindow::NewLoginWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::NewLoginWindow)
 {
@@ -30,6 +31,7 @@ void NewLoginWindow::on_pushButtonLogin_clicked()
     }
     else
     {
+        rww.show();
         qDebug() << "User does not exist";
     }
 }

@@ -5,6 +5,55 @@
   <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>
+  <property name="styleSheet">
+    <string notr="true">
+     QWidget {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+     }
+     QTabWidget::pane {
+      border: none;
+     }
+     
+     QPushButton {
+      background-color: #3b3b3b;
+      color: #dcdcdc;
+      border-radius: 20px;
+      padding: 5px;
+      min-width: 80px;
+     }
+     QPushButton:hover {
+      background-color: #575757;
+     }
+     QPushButton:pressed {
+      background-color: #737373;
+     }
+
+     QPlainTextEdit, QTextBrowser {
+      background-color: #2e2e2e;
+      color: #dcdcdc;
+      border-radius: 15px;
+      padding: 10px;
+     }
+     
+     QListView {
+      background-color: #2e2e2e;
+      color: #dcdcdc;
+      border-radius: 15px;
+      padding: 5px;
+     }
+     
+     QListView::item {
+      padding: 10px;
+      border-bottom: 1px solid #3b3b3b;
+     }
+     
+     QListView::item:selected {
+      background-color: #575757;
+      color: white;
+     }
+    </string>
+   </property>
   <property name="geometry">
    <rect>
     <x>0</x>

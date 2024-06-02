@@ -193,7 +193,6 @@ void MainWindow::on_pushButton_Reset_clicked()
 {
     ui->textbox_response->clear();
     ui->textedit_subject->clear();
-    rww.show();
 }
 
 void MainWindow::on_pushButton_CMS_clicked()
